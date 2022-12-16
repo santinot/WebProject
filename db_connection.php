@@ -28,4 +28,5 @@ function CloseConnection()
     $conn = new mysqli($servername, $username, $password, $dbname);
     $conn->close();
 }
+
 ?>
