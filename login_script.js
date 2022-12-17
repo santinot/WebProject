@@ -15,7 +15,7 @@ function SendData() {
         url: "login.php",
         data: {email: email, password: password},
         success: function(data) {
-            console.log(data);
+            console.log("Login Success");
         }
     })
 }
