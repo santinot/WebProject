@@ -1,14 +1,14 @@
 <?php
-include('db_connection.php');
+include("db_connection.php");
 $conn = OpenConnection();
 
 class User {
-    private $fname;
-    private $lname;
-    private $phone;
-    private $email;
-    private $password;
-    private $token;
+    public $fname;
+    public $lname;
+    public $phone;
+    public $email;
+    public $password;
+    public $token;
 
     function __construct($fname,$lname,$phone,$email,$password){
         $this->fname = $fname;
@@ -16,28 +16,15 @@ class User {
         $this->phone = $phone;
         $this->email = $email;
         $this->password = $password;
-        $this->token = 123;
+        $this->token = rand(0,100000);
     }
 }
 
 
-#$user = new User($_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['email'],$_POST['password1']);
-$sql1 = "INSERT INTO Info (fname,lname,phone,token) VALUES ('Santino','Moncata','1111','123')";
-$conn->query($sql1);
+$user = new User($_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['email'],$_POST['password1']);
+$sql = "INSERT INTO Users (email,password) VALUES ('$user->email','$user->password');"; 
+$sql .= "INSERT INTO Info (fname,lname,phone,token) VALUES ('$user->fname','$user->lname','$user->phone','$user->token')";
 
-/*
-$sql2 = "INSERT INTO User (email,password) VALUES ('$user->email','$user->password')";
+$conn->multi_query($sql);
 
-
-if($conn->query($sql1)){
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-if($conn->query($sql2)){
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-*/
 ?>
