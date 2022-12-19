@@ -8,7 +8,11 @@ window.onload = function(){
         var password1 = document.getElementById("signupPassword1").value;
         var password2 = document.getElementById("signupPassword2").value;
 
-        if(password1 != password2){
+        if(fname == "" || lname == "" || phone == "" || email == "" || password1 == "" || password2 == ""){
+            document.getElementById("fname").className = "form-control is-invalid";
+            //alert("Please fill all fields");
+            return;
+        }else if(password1 != password2){
             alert("Passwords do not match");
             return;
         }else{
