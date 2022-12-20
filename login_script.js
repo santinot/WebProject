@@ -10,9 +10,9 @@ window.onload = function(){
             data: {email: email, password: password},
             success: function(data) {
                 console.log(data);
-            },
-            error: function(data) {
-                console.log(data);
+                if (data == "Login Failed") {
+                    alert("Login Failed");
+                }
             }
         })
     }

@@ -7,8 +7,8 @@ window.onload = function(){
         var email = document.getElementById("signupEmail").value;
         var password1 = document.getElementById("signupPassword1").value;
         var password2 = document.getElementById("signupPassword2").value;
-
-        if(fname == "" || lname == "" || phone == "" || email == "" || password1 == "" || password2 == ""){
+        $("#fname").removeClass("is-invalid");
+        if(fname == "" ){
             document.getElementById("fname").className = "form-control is-invalid";
             //alert("Please fill all fields");
             //to be continued
