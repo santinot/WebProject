@@ -11,6 +11,7 @@ window.onload = function(){
         if(fname == "" || lname == "" || phone == "" || email == "" || password1 == "" || password2 == ""){
             document.getElementById("fname").className = "form-control is-invalid";
             //alert("Please fill all fields");
+            //to be continued
             return;
         }else if(password1 != password2){
             alert("Passwords do not match");
