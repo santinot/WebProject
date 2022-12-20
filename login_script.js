@@ -1,8 +1,8 @@
 window.onload = function(){
-    document.getElementById("signinBtn").addEventListener("click", SendData);
+    document.getElementById("loginBtn").addEventListener("click", SendData);
     function SendData() {
-        var email = document.getElementById("signinEmail").value;
-        var password = document.getElementById("signinPassword").value;
+        var email = document.getElementById("loginEmail").value;
+        var password = document.getElementById("loginPassword").value;
         
         $.ajax({
             type: "POST",

@@ -16,7 +16,6 @@ class User {
         $this->phone = $phone;
         $this->email = $email;
         $this->password = $password;
-        $this->token = rand(0,100000);
     }
 }
 
@@ -24,7 +23,7 @@ class User {
 $user = new User($_POST['fname'],$_POST['lname'],$_POST['phone'],$_POST['email'],$_POST['password1']);
 $user->password = password_hash($user->password, PASSWORD_DEFAULT);
 $sql = "INSERT INTO Users (email,password) VALUES ('$user->email','$user->password');"; 
-$sql .= "INSERT INTO Info (fname,lname,phone,token) VALUES ('$user->fname','$user->lname','$user->phone','$user->token')";
+$sql .= "INSERT INTO Info (fname,lname,phone) VALUES ('$user->fname','$user->lname','$user->phone')";
 
 $conn->multi_query($sql);
 
