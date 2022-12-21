@@ -17,7 +17,7 @@ window.onload = function(){
                 if (data == "Login Failed") {
                     alert("Login Failed");
                 }else{
-                    window.location.href = "index.html";
+                    window.location.href = "home.html";
                 }
             }
         })
