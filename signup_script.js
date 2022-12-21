@@ -23,6 +23,7 @@ window.onload = function(){
                 data: {fname: fname, lname: lname, phone: phone, email: email, password1: password1},
                 success: function(data) {
                     console.log("Signup Success");
+                    location.reload(true);
                 }
             })
         }
