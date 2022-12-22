@@ -19,7 +19,7 @@ window.onload = function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "signup.php", 
+                url: "php/signup.php", 
                 data: {fname: fname, lname: lname, phone: phone, email: email, password1: password1},
                 success: function(data) {
                     console.log("Signup Success");

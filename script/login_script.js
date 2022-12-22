@@ -11,7 +11,7 @@ window.onload = function(){
         
         $.ajax({
             type: "POST",
-            url: "login.php",
+            url: "php/login.php",
             data: {email: email, password: password},
             success: function(data) {
                 if (data == "Login Failed") {
