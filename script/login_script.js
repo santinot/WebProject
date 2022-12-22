@@ -10,15 +10,19 @@ window.onload = function(){
         var password = document.getElementById("loginPassword").value;
         
         $.ajax({
-            type: "POST",
-            url: "php/login.php",
-            data: {email: email, password: password},
+            type: "GET",
+            url: "api.php/Users",
+            //data: {email: email, password: password},
             success: function(data) {
-                if (data == "Login Failed") {
+            /*    if (data == "Login Failed") {
                     alert("Login Failed");
                 }else{
                     window.location.href = "home.html";
-                }
+                }*/
+                console.log(data);
+            },
+            error: function(data) {
+                console.log(data);
             }
         })
     }
