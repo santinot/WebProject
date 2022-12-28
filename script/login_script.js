@@ -4,23 +4,20 @@ window.onload = function(){
         if(e.key == "Enter"){
             CheckData();
         }
-    });
+    })
     
     console.log("Login script loaded");
     
-    function CheckData() {
-        var email = document.getElementById("loginEmail").value;
-        var password = document.getElementById("loginPassword").value;
-        
+    function CheckData(){
         $.ajax({
             type: "POST",
-            url: "api.php/Users/",
-            data: {email: email, password: password},
-            success: function(data) {
-                //location.href = "home.html";
-                console.log(data);
+            url: "api.php/Users",
+            data: {
+                action: "Login",
+                email: document.getElementById("loginEmail").value,
+                password:  document.getElementById("loginPassword").value
             },
-            error: function(data) {
+            success: function(data) {
                 console.log(data);
             }
         })
