@@ -2,8 +2,8 @@
 
 function InsertData($conn,$table1,$table2,$set1,$set2){
   $sql = "INSERT INTO `$table1` SET $set2;";
-  $sql.= "INSERT INTO `$table2` SET $set1;";
-  echo $sql;
+  $sql.= "INSERT INTO `$table2` SET $set1, `ID_User` = LAST_INSERT_ID();";
+  $sql.= "INSERT INTO `Folder` SET `ID_User` = LAST_INSERT_ID(), `name` = 'Default';";
   
   if($conn->multi_query($sql)){
     return "Registration successful";
