@@ -1,4 +1,5 @@
 <?php
+/*
 require_once('db_connection.php');
 $conn = OpenConnection();
 
@@ -17,4 +18,11 @@ if ($result = $conn->query($sql)) {
 } else {
     echo "Query Failed";
 }
+*/
+
+
+
+
+
+
 ?>

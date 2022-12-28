@@ -27,5 +27,4 @@ function CloseConnection()
     $conn->close();
 }
 
-
 ?>

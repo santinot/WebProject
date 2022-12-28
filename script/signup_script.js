@@ -1,5 +1,6 @@
 window.onload = function(){
     document.getElementById("signupBtn").addEventListener("click", Registration);
+    
     function Registration(){
         var fname = document.getElementById("fname").value;
         var lname = document.getElementById("lname").value;
@@ -7,23 +8,30 @@ window.onload = function(){
         var email = document.getElementById("signupEmail").value;
         var password1 = document.getElementById("signupPassword1").value;
         var password2 = document.getElementById("signupPassword2").value;
+        /*
         $("#fname").removeClass("is-invalid");
         if(fname == "" ){
             document.getElementById("fname").className = "form-control is-invalid";
             //alert("Please fill all fields");
             //to be continued
-            return;
-        }else if(password1 != password2){
+            return;*/
+        if(password1 != password2){
             alert("Passwords do not match");
             return;
         }else{
             $.ajax({
                 type: "POST",
-                url: "php/signup.php", 
-                data: {fname: fname, lname: lname, phone: phone, email: email, password1: password1},
+                url: "api.php/Users/Info", 
+                data: {
+                    action: "Registration",
+                    fname: fname,
+                    lname: lname,
+                    phone: phone, 
+                    email: email, 
+                    password1: password1
+                },
                 success: function(data) {
-                    console.log("Signup Success");
-                    location.reload(true);
+                    console.log(data);
                 }
             })
         }
