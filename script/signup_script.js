@@ -28,7 +28,11 @@ window.onload = function(){
                 },
                 success: function(data) {
                     console.log(data);
-                    location.href = "index.html";
+                    alert("Registration Successful");
+                    location.href = "index.php";
+                },
+                error: function(data) {
+                    alert(data);
                 }
             })
         }

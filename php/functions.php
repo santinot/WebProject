@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 function InsertData($conn,$table1,$table2,$set1,$set2){
   $sql = "INSERT INTO `$table1` SET $set2;";
   $sql.= "INSERT INTO `$table2` SET $set1, `ID_User` = LAST_INSERT_ID();";
@@ -9,7 +10,7 @@ function InsertData($conn,$table1,$table2,$set1,$set2){
     return "Registration successful";
   }
   else{
-    return die("Error: " . $sql . "<br>" . $conn->error . "");
+    return "Registration failed";
   }
 }
 
@@ -18,12 +19,27 @@ function CheckData($conn,$table1,$set,$pwd){
   
   if ($result = $conn->query($sql)) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
+    $_SESSION['ID_User'] = $row['ID'];
     if (password_verify($pwd, $row['password']))
         echo "Login Successful";
     else
         echo "Login Failed";
-  } else {
-    echo "Query Failed";
-  }
+    } else {
+      echo "Query Failed";
+    }
 }
+
+function CreateItem($conn,$table1,$set, $id){
+  $sql = "INSERT INTO `$table1` SET $set, `ID_Folder` = $id;"; //non funziona id
+  echo $sql;
+  /*
+  if($conn->query($sql))
+      return "Item created";
+  else
+    return "Item creation failed";*/
+}
+
+
+
+
 ?>

@@ -1,15 +1,20 @@
 <?php
 require_once('php/db_connection.php');
 require_once('php/functions.php');
+session_start();
 $conn = OpenConnection();
-
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if($method == 'POST'){
-  $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
-  $table1 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
-  
+$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+$table1 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
+
+switch ($method) {
+  case 'GET':
+    break;
+  case 'PUT':
+    break;
+  case 'POST':
   if($_POST['action'] === 'Registration'){
       $table2 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
       $columns = preg_replace('/[^a-z0-9_]+/i','',array_keys($_POST));
@@ -40,8 +45,26 @@ if($method == 'POST'){
     $set = '';
     $set = '`'. $columns[1] . '`=' . '"' . $values[1] . '"';
     $pwd = $values[2];
-    CheckData($conn, $table1, $set, $pwd);
+    return CheckData($conn, $table1, $set, $pwd);
   }
+
+    if ($_POST['action'] === 'AddItemCard') {
+      $columns = preg_replace('/[^a-z0-9_]+/i', '', array_keys($_POST));
+      $values = array_map(function ($value) use ($conn) {
+        if ($value === null)
+          return null;
+        return mysqli_real_escape_string($conn, (string) $value);
+      }, array_values($_POST));
+      $set = '';
+      for ($i = 1; $i < count($columns); $i++) {
+        $set .= ($i > 1 ? ',' : '') . '`' . $columns[$i] . '`=';
+        $set .= ($values[$i] === null ? 'NULL' : '"' . $values[$i] . '"');
+      }
+    CreateItem($conn, $table1, $set, $_SESSION['ID_Folder']);
+    }
+  break;
+  case 'DELETE':
+    break;
 }
 
 

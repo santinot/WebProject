@@ -19,7 +19,11 @@ window.onload = function(){
             },
             success: function(data) {
                 console.log(data);
-                location.href = "home.html";
+                if(data == "Login Failed"){
+                    alert("Login Failed");
+                }else{
+                    location.href = "home.php";
+                }
             }
         })
     }
