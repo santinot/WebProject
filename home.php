@@ -3,6 +3,7 @@
   if(!isset($_SESSION['ID_User'])){
     header("Location: index.php");
   }
+  
 ?>
 <!doctype html>
 <html lang="it">
@@ -51,7 +52,11 @@
           </div>
         </div>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" id="btn">Click</button>
+      <button class="w-100 btn btn-lg btn-primary" id="btn">Card</button>
+
+      <button class="w-100 btn btn-lg btn-primary" id="btn2">Login</button>
+
+      <button class="w-100 btn btn-lg btn-primary" id="btn3">Note</button>
 
 
 
