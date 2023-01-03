@@ -32,9 +32,9 @@ if (!isset($_SESSION['ID_User'])) {
         </a>
 
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-          <a class="me-3 py-2 text-dark text-decoration-none" href="#">Oggetti</a>
+          <a class="me-3 py-2 text-dark text-decoration-none" href="home.php">Oggetti</a>
           <a class="me-3 py-2 text-dark text-decoration-none" href="#">Cartelle</a>
-          <a class="me-3 py-2 text-dark text-decoration-none" href="#">Strumenti</a>
+          <a class="me-3 py-2 text-dark text-decoration-none" href="tools.php">Strumenti</a>
           <a class="me-3 py-2 text-dark text-decoration-none nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Profilo</a>
             <ul class="dropdown-menu">
               <li><a class="p-3 text-dark text-decoration-none" href="#scrollspyHeading3">Impostazioni</a></li>

@@ -18,11 +18,11 @@ if (!isset($_SESSION['ID_User'])) {
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="######"></script>
+    <script src="script/tools_script.js"></script>
     <link href="style/home.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container py-3 ">
+        <div class="container py-3">
             <header class="form-signin w-100 m-auto">
                 <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
                     <a href="home.html" class="d-flex align-items-center text-dark text-decoration-none">
@@ -31,7 +31,7 @@ if (!isset($_SESSION['ID_User'])) {
                     </a>
 
                     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                    <a class="me-3 py-2 text-dark text-decoration-none" href="#">Oggetti</a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="home.php">Oggetti</a>
                     <a class="me-3 py-2 text-dark text-decoration-none" href="#">Cartelle</a>
                     <a class="me-3 py-2 text-dark text-decoration-none" href="#">Strumenti</a>
                     <a class="me-3 py-2 text-dark text-decoration-none nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Profilo</a>
@@ -42,13 +42,49 @@ if (!isset($_SESSION['ID_User'])) {
                     </nav>
                 </div>
             </header>
-        
-            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-            </select>
+            <div class="p-5 m-3" >
+                <label for="selectItem" class="form-label"><h4>Seleziona il tipo di oggetto da inserire</h4></label>
+                <select class="form-select form-select-lg mb-3" id="selectItem" aria-label=".form-select-lg example">
+                    <option selected>Tipo di Oggetto...</option>
+                    <option value="Login">Login</option>
+                    <option value="Card">Carta</option>
+                    <option value="Note">Nota</option>
+                </select>
+                <div id="box" hidden>
+                    <label id="input1" for="text1"></label>
+                    <input type="text" class="form-control" id="text1">
+
+                    <div class="row align-items-end">
+                        <div class="col">
+                            <label id="input2" for="text2"></label>
+                            <input type="text" class="form-control" id="text2">
+                        </div>
+                        <div class="col-4" id="colPassCheck">
+                                <input class="form-check-input" type="checkbox" id="showPass">
+                                <label class="form-check-label" for="showPass">Mostra Password</label>
+                        </div>
+                    </div> 
+
+                    <label id="input3" for="text3"></label>
+                    <input type="text" class="form-control" id="text3">
+                    <textarea class="form-control" id="textBox" rows="3" placeholder="Nota" hidden></textarea>
+
+                    <label id="input4" for="text4"></label>
+                    <input type="" class="form-control" id="text4">
+                    <br>
+
+                    <div class="row justify-content-between">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-success">Inserisci</button>
+                        </div>
+                        <div class="col-4">
+                                <input class="form-check-input" type="checkbox" id="favouriteCheck">
+                                <label class="form-check-label" for="favouriteCheck">Aggiungi ai Preferiti</label>
+                        </div>     
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 
