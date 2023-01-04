@@ -5,7 +5,7 @@ session_start();
 function InsertData($conn,$table1,$table2,$set1,$set2){
   $sql = "INSERT INTO `$table1` SET $set2;";
   $sql.= "INSERT INTO `$table2` SET $set1, `ID_User` = LAST_INSERT_ID();";
-  $sql.= "INSERT INTO `Folder` SET `ID_User` = LAST_INSERT_ID(), `name` = 'Default';";
+  $sql.= "INSERT INTO `Folders` SET `ID_User` = LAST_INSERT_ID(), `name` = 'Default';";
   
   if($conn->multi_query($sql)){
     echo "Registration successful";
@@ -31,7 +31,7 @@ function CheckData($conn,$table1,$set,$pwd){
 }
 
 function CreateItem($conn,$table1,$set){
-  $sql = "INSERT INTO `$table1` SET $set, `ID_Folder` = (SELECT `ID` FROM `Folder` WHERE `ID_User` LIKE $_SESSION[ID_User]);";
+  $sql = "INSERT INTO `$table1` SET $set, `ID_Folder` = (SELECT `ID` FROM `Folders` WHERE `ID_User` LIKE $_SESSION[ID_User]);";
   echo $sql;
   if($conn->query($sql))
     echo "Item created";
@@ -41,6 +41,16 @@ function CreateItem($conn,$table1,$set){
 
 function ShowItem($conn,$set){
   $sql = "SELECT DISTINCT * FROM `ItemCard` JOIN `ItemNote` JOIN `ItemLogin` ON ItemCard.ID_Folder = $_SESSION[ID_User];";
+  if ($result = $conn->query($sql)) {
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    return $row;
+  } else {
+    echo "Query Failed";
+  }
+}
+
+function ShowFolder($conn,$set){
+  $sql = "SELECT DISTINCT `name` FROM `Folders` WHERE $set;";
   if ($result = $conn->query($sql)) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
     return $row;

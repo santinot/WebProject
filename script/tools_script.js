@@ -46,8 +46,16 @@ window.onload = function(){
 
     });
 
-    
-   
+    $.ajax({
+        type: "GET",
+        url: "api.php/Folders", 
+        success: function(data) {
+            ;
+        },
+        error: function(data) {
+            alert("Error");
+        }
+    });
 
 
 }
