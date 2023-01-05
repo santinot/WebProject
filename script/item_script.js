@@ -57,7 +57,7 @@ window.onload = function(){
             }
         })
     }
-
+/*
     function ShowItem(){
         $.ajax({
             type: "GET",
@@ -70,4 +70,5 @@ window.onload = function(){
             }
         })
     };
+ */
 }

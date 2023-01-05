@@ -39,6 +39,7 @@ function CreateItem($conn,$table1,$set){
     echo "Item Creation Failed";
 }
 
+/*
 function ShowItem($conn,$set){
   $sql = "SELECT DISTINCT * FROM `ItemCard` JOIN `ItemNote` JOIN `ItemLogin` ON ItemCard.ID_Folder = $_SESSION[ID_User];";
   if ($result = $conn->query($sql)) {
@@ -48,15 +49,17 @@ function ShowItem($conn,$set){
     echo "Query Failed";
   }
 }
+*/
 
 function ShowFolder($conn,$set){
-  $sql = "SELECT DISTINCT `name` FROM `Folders` WHERE $set;";
+  $sql = "SELECT `ID`,`name` FROM `Folders` WHERE $set;";
   if ($result = $conn->query($sql)) {
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-    return $row;
-  } else {
+    $options = [];
+    while($row = $result->fetch_array(MYSQLI_ASSOC))
+      array_push($options,$row);
+    echo json_encode($options);
+  } else
     echo "Query Failed";
-  }
 }
 
 

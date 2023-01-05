@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['ID_User'])) {
   header("Location: index.php");
 }
+
 ?>
 
 <!doctype html>
@@ -70,7 +71,8 @@ if (!isset($_SESSION['ID_User'])) {
                     <textarea class="form-control" id="textBox" rows="3" placeholder="Nota" hidden></textarea>
 
                     <label id="input4" for="text4"></label>
-                    <input type="" class="form-control" id="text4">
+                    <select class="form-select" id="text4" aria-label=".form-select-lg example">
+                    </select>
                     <br>
 
                     <div class="row justify-content-between">

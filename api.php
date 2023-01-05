@@ -9,14 +9,12 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 $table1 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
-
 switch ($method) {
   case 'GET':
     if($table1 === 'Folders'){
       $set = '';
       $set = '`ID_User`=' . $_SESSION['ID_User'];
-      $row = ShowFolder($conn,$set);
-      echo json_encode($row);
+      ShowFolder($conn,$set);
     }
     
     break;
