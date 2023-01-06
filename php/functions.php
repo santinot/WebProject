@@ -32,6 +32,7 @@ function CheckData($conn,$table1,$set,$pwd){
 
 function CreateItem($conn,$table1,$set){
   $sql = "INSERT INTO `$table1` SET $set;";
+  var_dump($sql);
   echo $sql;
   if($conn->query($sql))
     echo "Item created";
@@ -53,7 +54,6 @@ function ShowItem($conn,$set){
 
 function ShowFolder($conn,$set){
   $sql = "SELECT `ID`,`name` FROM `Folders` WHERE $set;";
-  var_dump($sql);
   if ($result = $conn->query($sql)) {
     $options = [];
     while($row = $result->fetch_array(MYSQLI_ASSOC))

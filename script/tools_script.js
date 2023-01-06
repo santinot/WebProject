@@ -1,22 +1,74 @@
-window.onload = function(){
+    window.onload = function(){
+
+    function CreateItemCard(){
+        var num = document.getElementById("text1").value;
+        var term = document.getElementById("text2").value;
+        var cvv = document.getElementById("text3").value;
+        var folder = document.getElementById("folder").value;
+        $.ajax({
+            type: "POST",
+            url: "api.php/ItemCard",
+            data: {
+                action: "AddItem",
+                number: num,
+                term: term,
+                cvv: cvv,
+                ID_Folder: folder
+            },
+            success: function(data) {
+                console.log(data);
+                if(data == "Item Creation Failed")
+                    alert("Item Creation Failed");
+            }
+        })
+    };
+
+    function CreateItemLogin(){
+        var user = document.getElementById("text1").value;
+        var pass = document.getElementById("text2").value;
+        var uri = document.getElementById("text3").value;
+        var folder = document.getElementById("folder").value;
+        $.ajax({
+            type: "POST",
+            url: "api.php/ItemLogin",
+            data: {
+                action: "AddItem",
+                username: user,
+                password: pass,
+                uri: uri,
+                ID_Folder: folder
+            },
+            success: function(data) {
+                console.log(data);
+                if(data == "Item Creation Failed")
+                    alert("Item Creation Failed");
+            }
+        })
+    };
+
+    function CreateItemNote(){
+        var name = document.getElementById("text1").value;
+        var text = document.getElementById("textBox").value;
+        var folder = document.getElementById("folder").value;
+        $.ajax({
+            type: "POST",
+            url: "api.php/ItemNote",
+            data: {
+                action: "AddItem",
+                name: name,
+                text: text,
+                ID_Folder: folder
+            },
+            success: function(data) {
+                console.log(data);
+                if(data == "Item Creation Failed")
+                    alert("Item Creation Failed");
+            }
+        })
+    };
+
 
     document.getElementById('selectItem').addEventListener('change', function(){
-
-        $.ajax({
-            type: "GET",
-            url: "api.php/Folders", 
-            success: function(data) {
-                data = JSON.parse(data);
-                console.log(data);
-                for(var i = 0; i < data.length; i++){
-                    var opt = document.createElement('option');
-                    opt.value = data[i].ID;
-                    opt.innerHTML = data[i].name;
-                    document.getElementById('folder').appendChild(opt);
-                }
-            }
-        });
-        
         document.getElementById('box').removeAttribute('hidden');
         if(this.value === 'Login'){
             document.getElementById('colPassCheck').removeAttribute('hidden', 'hidden');
@@ -55,10 +107,36 @@ window.onload = function(){
 
     });
 
+    $.ajax({
+        type: "GET",
+        url: "api.php/Folders", 
+        success: function(data) {
+            
+            data = JSON.parse(data);
+            for(var i = 0; i < data.length; i++){
+                var opt = document.createElement('option');
+                opt.value = data[i].ID;
+                opt.innerHTML = data[i].name;
+                document.getElementById('folder').appendChild(opt);
+            }
+        }
+    });
+
     document.getElementById('showPass').addEventListener('click',function(){
         if (document.getElementById('showPass').checked == true) 
             document.getElementById('text2').type = 'text';
         else
            document.getElementById('text2').type = 'password';
-    });        
+    });
+    
+    document.getElementById('sendBtn').addEventListener('click', function(){
+        if(document.getElementById('selectItem').value === 'Login')
+            CreateItemLogin();
+        else if(document.getElementById('selectItem').value === 'Card')
+            CreateItemCard();
+        else if(document.getElementById('selectItem').value === 'Note')
+            CreateItemNote();
+    });
 }
+
+

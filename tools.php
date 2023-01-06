@@ -70,7 +70,7 @@ if (!isset($_SESSION['ID_User'])) {
                     <input type="text" class="form-control" id="text3">
                     <textarea class="form-control" id="textBox" rows="3" placeholder="Nota" hidden></textarea>
 
-                    <label id="input4" for="text4">Cartella</label>
+                    <label id="input4" for="folder">Cartella</label>
                     <select class="form-select" id="folder" aria-label=".form-select-lg example">
                     </select>
                     <br>

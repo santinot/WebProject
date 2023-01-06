@@ -1,17 +1,5 @@
 window.onload = function(){
-
-    document.getElementById("sendBtn").addEventListener("click", Send);
-    
-    function Send(){
-        if(document.getElementById("selectItem").value == "Card"){
-            CreateItemCard();
-        }else if(document.getElementById("selectItem").value == "Login"){
-            CreateItemLogin();
-        }else if(document.getElementById("selectItem").value == "Note"){
-            CreateItemNote();
-        }
-    }
-    
+    /*
     function CreateItemCard(){
         var num = document.getElementById("text1").value;
         var term = document.getElementById("text2").value;
@@ -78,7 +66,7 @@ window.onload = function(){
             }
         })
     }
-/*
+
     function ShowItem(){
         $.ajax({
             type: "GET",
