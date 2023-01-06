@@ -61,8 +61,8 @@ if (!isset($_SESSION['ID_User'])) {
                             <input type="text" class="form-control" id="text2">
                         </div>
                         <div class="col-4" id="colPassCheck">
-                                <input class="form-check-input" type="checkbox" id="showPass">
-                                <label class="form-check-label" for="showPass">Mostra Password</label>
+                            <input class="form-check-input" type="checkbox" id="showPass">
+                            <label class="form-check-label" for="showPass">Mostra Password</label>
                         </div>
                     </div> 
 
@@ -70,14 +70,14 @@ if (!isset($_SESSION['ID_User'])) {
                     <input type="text" class="form-control" id="text3">
                     <textarea class="form-control" id="textBox" rows="3" placeholder="Nota" hidden></textarea>
 
-                    <label id="input4" for="text4"></label>
-                    <select class="form-select" id="text4" aria-label=".form-select-lg example">
+                    <label id="input4" for="text4">Cartella</label>
+                    <select class="form-select" id="folder" aria-label=".form-select-lg example">
                     </select>
                     <br>
 
                     <div class="row justify-content-between">
                         <div class="col-4">
-                            <button type="button" class="btn btn-success">Inserisci</button>
+                            <button type="button" id="sendBtn" class="btn btn-success">Inserisci</button>
                         </div>
                         <div class="col-4">
                                 <input class="form-check-input" type="checkbox" id="favouriteCheck">

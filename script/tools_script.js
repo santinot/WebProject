@@ -1,6 +1,22 @@
 window.onload = function(){
 
     document.getElementById('selectItem').addEventListener('change', function(){
+
+        $.ajax({
+            type: "GET",
+            url: "api.php/Folders", 
+            success: function(data) {
+                data = JSON.parse(data);
+                console.log(data);
+                for(var i = 0; i < data.length; i++){
+                    var opt = document.createElement('option');
+                    opt.value = data[i].ID;
+                    opt.innerHTML = data[i].name;
+                    document.getElementById('folder').appendChild(opt);
+                }
+            }
+        });
+        
         document.getElementById('box').removeAttribute('hidden');
         if(this.value === 'Login'){
             document.getElementById('colPassCheck').removeAttribute('hidden', 'hidden');
@@ -12,7 +28,7 @@ window.onload = function(){
             document.getElementById('input1').innerHTML = 'Username';
             document.getElementById('input2').innerHTML = 'Password';
             document.getElementById('input3').innerHTML = 'URI';
-            document.getElementById('input4').innerHTML = 'Cartella';
+
         }else if(this.value === 'Card'){
             document.getElementById('colPassCheck').setAttribute('hidden', 'hidden');
             document.getElementById('textBox').setAttribute('hidden', 'hidden');
@@ -23,14 +39,8 @@ window.onload = function(){
             document.getElementById('input1').innerHTML = 'Numero della Carta';
             document.getElementById('input2').innerHTML = 'Scadenza';
             document.getElementById('input3').innerHTML = 'CVV';
-            document.getElementById('input4').innerHTML = 'Cartella';
 
-            document.getElementById('showPass').addEventListener('click',function(){
-                if (document.getElementById('showPass').checked == true) 
-                   document.getElementById('text2').type = 'text';
-               else
-                   document.getElementById('text2').type = 'password';
-           });
+            
         }else if(this.value === 'Note'){
             document.getElementById('colPassCheck').setAttribute('hidden', 'hidden');
             document.getElementById('textBox').removeAttribute('hidden', 'hidden');
@@ -39,28 +49,16 @@ window.onload = function(){
             document.getElementById('text3').setAttribute('hidden', 'hidden');
             document.getElementById('input1').innerHTML = 'Nome della Nota';
             document.getElementById('input2').innerHTML = 'Insersci il testo...';
-            document.getElementById('input4').innerHTML = 'Cartella';
         }else{
             document.getElementById('box').setAttribute('hidden', 'hidden' );
         }
 
     });
 
-        $.ajax({
-            type: "GET",
-            url: "api.php/Folders", 
-            success: function(data) {
-                data = JSON.parse(data);
-                for(var i = 0; i < data.length; i++){
-                    var opt = document.createElement('option');
-                    opt.value = data[i].ID;
-                    opt.innerHTML = data[i].name;
-                    document.getElementById('text4').appendChild(opt);
-                }
-            }
-        });
-       
-
-
-
+    document.getElementById('showPass').addEventListener('click',function(){
+        if (document.getElementById('showPass').checked == true) 
+            document.getElementById('text2').type = 'text';
+        else
+           document.getElementById('text2').type = 'password';
+    });        
 }

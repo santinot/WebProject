@@ -1,19 +1,31 @@
 window.onload = function(){
 
-    document.getElementById("btn").addEventListener("click", CreateItemCard);
-    document.getElementById("btn2").addEventListener("click", CreateItemLogin);
-    document.getElementById("btn3").addEventListener("click", CreateItemNote);
-
+    document.getElementById("sendBtn").addEventListener("click", Send);
+    
+    function Send(){
+        if(document.getElementById("selectItem").value == "Card"){
+            CreateItemCard();
+        }else if(document.getElementById("selectItem").value == "Login"){
+            CreateItemLogin();
+        }else if(document.getElementById("selectItem").value == "Note"){
+            CreateItemNote();
+        }
+    }
     
     function CreateItemCard(){
+        var num = document.getElementById("text1").value;
+        var term = document.getElementById("text2").value;
+        var cvv = document.getElementById("text3").value;
+        var folder = document.getElementById("folder").value;
         $.ajax({
             type: "POST",
             url: "api.php/ItemCard",
             data: {
                 action: "AddItem",
-                number: 5400000000000000,
-                term: "2012-01-01",
-                cvv: 123
+                number: num,
+                term: term,
+                cvv: cvv,
+                ID_Folder: folder
             },
             success: function(data) {
                 console.log(data);
@@ -24,14 +36,19 @@ window.onload = function(){
     }
 
     function CreateItemLogin(){
+        var user = document.getElementById("text1").value;
+        var pass = document.getElementById("text2").value;
+        var uri = document.getElementById("text3").value;
+        var folder = document.getElementById("folder").value;
         $.ajax({
             type: "POST",
             url: "api.php/ItemLogin",
             data: {
                 action: "AddItem",
-                username: "username",
-                password: "password",
-                uri: "uri"
+                username: user,
+                password: pass,
+                uri: uri,
+                ID_Folder: folder
             },
             success: function(data) {
                 console.log(data);
@@ -42,13 +59,17 @@ window.onload = function(){
     }
 
     function CreateItemNote(){
+        var name = document.getElementById("text1").value;
+        var text = document.getElementById("textBox").value;
+        var folder = document.getElementById("folder").value;
         $.ajax({
             type: "POST",
             url: "api.php/ItemNote",
             data: {
                 action: "AddItem",
-                name: "name",
-                text: "dasdasdas"
+                name: name,
+                text: text,
+                ID_Folder: folder
             },
             success: function(data) {
                 console.log(data);
