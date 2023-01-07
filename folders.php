@@ -21,7 +21,7 @@ function LogOut(){
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="script/tools_script.js"></script>
+    <script src="######"></script>
     <link href="style/home.css" rel="stylesheet">
     </head>
     <body>
@@ -36,7 +36,7 @@ function LogOut(){
                     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                     <a class="me-3 py-2 text-dark text-decoration-none" href="home.php">Oggetti</a>
                     <a class="me-3 py-2 text-dark text-decoration-none" href="folders.php">Cartelle</a>
-                    <a class="me-3 py-2 text-dark text-decoration-none" href="tools.php">Strumenti</a>
+                    <a class="me-3 py-2 text-dark text-decoration-none" href="insert.php">Inserisci</a>
                     <a class="me-3 py-2 text-dark text-decoration-none nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Profilo</a>
                         <ul class="dropdown-menu">
                         <li><a class="p-3 text-dark text-decoration-none" href="#scrollspyHeading3">Impostazioni</a></li>
