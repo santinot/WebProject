@@ -16,6 +16,11 @@ switch ($method) {
       $set = '`ID_User`=' . $_SESSION['ID_User'];
       ShowFolder($conn,$set);
     }
+
+    if($table1 === 'Logout'){
+        unset($_SESSION['ID_User']);
+        session_destroy();
+    }
     
     break;
   case 'PUT':

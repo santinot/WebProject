@@ -163,6 +163,7 @@
             window.location.reload();
         }
     });
-}
 
+    
+}
 

@@ -23,6 +23,17 @@ function LogOut(){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="######"></script>
     <link href="style/home.css" rel="stylesheet">
+    <script>
+        function logout() {
+            $.ajax({
+                type: "GET",
+                url: "api.php/Logout", 
+                success: function(data) {
+                    window.location.href = "index.php";
+                }
+            });
+        }
+    </script>
     </head>
     <body>
         <div class="container py-3">
@@ -40,7 +51,7 @@ function LogOut(){
                     <a class="me-3 py-2 text-dark text-decoration-none nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Profilo</a>
                         <ul class="dropdown-menu">
                         <li><a class="p-3 text-dark text-decoration-none" href="#scrollspyHeading3">Impostazioni</a></li>
-                        <li><a class=" p-3 text-dark text-decoration-none" href="index.php" onclick="LogOut()">LogOut</a></li>
+                        <li><a class=" p-3 text-dark text-decoration-none" onclick="logout()" href="">LogOut</a></li>
                         </ul>
                     </nav>
                 </div>
