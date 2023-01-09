@@ -21,6 +21,7 @@ function LogOut(){
       crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- <script src="home_script.js"></script> -->
     <link href="style/home.css" rel="stylesheet">
     <script>
           function logout() {
@@ -59,19 +60,28 @@ function LogOut(){
 
       <div class="container">
         <div class="row">
+           <!-- Colonna di sinistra -->
           <div class="col-sm text-center">
-            Oggetti con icona in base a tipo
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <div class="card border-dark" style="width: 15rem;">
+              <div class="card-header">Tipi</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a>Login</a></li>
+                <li class="list-group-item"><a>Carte</a></li>
+                <li class="list-group-item"><a>Tipi</a></li>
+              </ul>
+            </div>
+            <div class="card border-dark" style="width: 15rem;">
+              <div class="card-header">Cartelle</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a>Default</a></li>
+                <li class="list-group-item"><a>Aggiungi una cartella...</a></li>
+              </ul>
             </div>
           </div>
           
-
-          <div class="col-sm-8 text-center">
-            One of three columns jlblljhjhkhkhh
-          </div>
+          
+           <!-- Colonna di destra -->            
+          <div class="col-sm-8 text-center"></div>
         </div>
       </div>
 
