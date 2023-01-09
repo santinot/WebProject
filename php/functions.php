@@ -33,7 +33,6 @@ function CheckData($conn,$table1,$set,$pwd){
 function CreateItem($conn,$table1,$set){
   $sql = "INSERT INTO `$table1` SET $set;";
   var_dump($sql);
-  echo $sql;
   if($conn->query($sql))
     echo "Item created";
   else
