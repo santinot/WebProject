@@ -41,7 +41,7 @@ switch ($method) {
         }
         for ($i=4;$i<count($columns);$i++) {
           $set2.=($i>4?',':'').'`'.$columns[$i].'`=';
-          $set2.=($values[$i]===null?'NULL':'"'.($i==5?(openssl_encrypt($values[$i],"aes-128-cbc",$_POST['username']).'"'):$values[$i].'"'));
+          $set2.=($values[$i]===null?'NULL':'"'.($i==5?(password_hash($values[$i],PASSWORD_DEFAULT).'"'):$values[$i].'"'));
         }
         InsertData($conn,$table1,$table2,$set1,$set2);
     }
@@ -71,7 +71,7 @@ switch ($method) {
         $set .= ($i > 1 ? ',' : '') . '`' . $columns[$i] . '`=';
         $set .= ($values[$i] === null ? 'NULL' : '"');
         if ($i == 2 && isset($_POST['password']))
-          $set .= password_hash($values[2], PASSWORD_DEFAULT) .'"';
+          $set .= openssl_encrypt($values[2],"aes-128-cbc",$_POST['username']) .'"';
           else
           $set .= $values[$i].'"';
       }
