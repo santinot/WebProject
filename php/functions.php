@@ -6,12 +6,12 @@ function InsertData($conn,$table1,$table2,$set1,$set2){
   $sql = "INSERT INTO `$table1` SET $set2;";
   $sql.= "INSERT INTO `$table2` SET $set1, `ID_User` = LAST_INSERT_ID();";
   $sql.= "INSERT INTO `Folders` SET `ID_User` = LAST_INSERT_ID(), `name` = 'Default';";
-  
+  var_dump($sql);
   if($conn->multi_query($sql)){
-    echo "Registration successful";
+    echo "Registration Successful";
   }
   else{
-    echo "Registration failed";
+    echo "Registration Failed";
   }
 }
 

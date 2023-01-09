@@ -27,8 +27,10 @@ window.onload = function(){
                     password: password
                 },
                 success: function(data) {
-                    console.log(data);
-                    alert("Registration Successful");
+                    if(data == "Registration Failed")
+                        alert("Registration Failed");
+                    else
+                        alert("Registration Successful");
                     location.href = "index.php";
                 },
                 error: function(data) {
