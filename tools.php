@@ -3,10 +3,6 @@ session_start();
 if (!isset($_SESSION['ID_User'])) {
   header("Location: index.php");
 }
-function LogOut(){
-    unset($_SESSION['ID_User']);
-    session_destroy();
-}
 ?>
 <!doctype html>
 <html lang="it">

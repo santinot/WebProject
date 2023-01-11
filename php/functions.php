@@ -61,6 +61,20 @@ function ShowFolder($conn,$set){
     echo "Query Failed";
 }
 
+function ShowItemsLogin($conn,$set){
+  $sql = "SELECT DISTINCT `uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
+  if ($result = $conn->query($sql)) {
+    $options = [];
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+      if ($row['password'] && $row['username'])
+        $row['password'] = openssl_decrypt($row['password'],"aes-128-cbc",$row['username']);
+      array_push($options, $row);
+    }
+    echo json_encode($options);
+  } else
+    echo "Query Failed";
+}
+
 
 
 ?>

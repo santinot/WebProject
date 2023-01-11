@@ -21,6 +21,12 @@ switch ($method) {
         unset($_SESSION['ID_User']);
         session_destroy();
     }
+
+    if($table1 === 'ItemLogin'){
+      $set = '';
+      $set = '`Folders`.`ID_User`=' . $_SESSION['ID_User'];
+      ShowItemsLogin($conn,$set);
+    }
     
     break;
   case 'PUT':

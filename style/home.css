@@ -8,8 +8,13 @@ body{
 div.card-header{
   background-color: #97D49B;
 }
-
-
-
+.myTable {
+  width: 100%;
+  padding: 25px;
+  background-color: #97D49B;
+  color: white;
+  font-size: 25px;
+  box-sizing: border-box;
+}
   
   

@@ -3,10 +3,6 @@ session_start();
 if (!isset($_SESSION['ID_User'])) {
   header("Location: index.php");
 }
-function LogOut(){
-  unset($_SESSION['ID_User']);
-  session_destroy();
-}
 ?>
 <!doctype html>
 <html lang="it">
@@ -21,7 +17,7 @@ function LogOut(){
       crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <!-- <script src="home_script.js"></script> -->
+    <script src="script/home_script.js"></script>
     <link href="style/home.css" rel="stylesheet">
     <script>
           function logout() {
@@ -65,15 +61,26 @@ function LogOut(){
             <div class="card border-dark" style="width: 15rem;">
               <div class="card-header">Tipi</div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a>Login</a></li>
-                <li class="list-group-item"><a>Carte</a></li>
-                <li class="list-group-item"><a>Tipi</a></li>
+                <li class="list-group-item"><button class="btn btn-outline-dark">
+                  <img src="img/list-check.svg" id="icon-box"  class="bi bi-list-check mx-3" width="30" height="30">Tutti gli oggetti..</button>
+                </li>
+                <li class="list-group-item"><button class="btn btn-outline-dark">
+                  <img src="img/login.svg" id="icon-box"  class="bi bi-list-check mx-2" width="30" height="30">Login</button>
+                </li>
+                <li class="list-group-item"><button class="btn btn-outline-dark">
+                  <img src="img/card.svg" id="icon-box"  class="bi bi-list-check mx-2" width="30" height="30">Carte</button>
+                </li>
+                <li class="list-group-item"><button class="btn btn-outline-dark">
+                  <img src="img/note.svg" id="icon-box"  class="bi bi-list-check mx-2" width="30" height="30">Note</button>
+                </li>
               </ul>
             </div>
             <div class="card border-dark" style="width: 15rem;">
               <div class="card-header">Cartelle</div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a>Default</a></li>
+              <li class="list-group-item"><button class="btn btn-outline-dark">
+                  <img src="img/archive.svg" id="icon-box"  class="bi bi-list-check mx-2" width="30" height="30">Default</button>
+                </li>
                 <li class="list-group-item"><a>Aggiungi una cartella...</a></li>
               </ul>
             </div>
@@ -81,7 +88,21 @@ function LogOut(){
           
           
            <!-- Colonna di destra -->            
-          <div class="col-sm-8 text-center"></div>
+          <div class="col-sm-8 text-center" id="division">
+          <!-- Tabella 
+          <table id="itemsTable" class="table table-borderless table-striped table-earning">
+            <thead>
+              <tr>
+                <th>date</th>
+                <th>file name</th>
+              </tr>
+            </thead>
+          <tbody id="tableBody"></tbody>
+        </table>-->
+
+
+
+          </div>
         </div>
       </div>
 
