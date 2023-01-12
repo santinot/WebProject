@@ -22,10 +22,10 @@ switch ($method) {
         session_destroy();
     }
 
-    if($table1 === 'ItemLogin'){
+    if($table1 === 'ItemLogin' || $table1 === 'ItemNote' || $table1 === 'ItemCard'){
       $set = '';
       $set = '`Folders`.`ID_User`=' . $_SESSION['ID_User'];
-      ShowItemsLogin($conn,$set);
+      ShowItems($conn,$set, $table1);
     }
     
     break;

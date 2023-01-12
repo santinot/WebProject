@@ -11,6 +11,14 @@ div.card-header{
 .myTable {
   width: 100%;
   padding: 25px;
+  color: black;
+  background-color: white;
+  font-size: 25px;
+  box-sizing: border-box;
+}
+.myTableHead {
+  width: 100%;
+  padding: 25px;
   background-color: #97D49B;
   color: white;
   font-size: 25px;

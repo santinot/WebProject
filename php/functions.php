@@ -38,17 +38,6 @@ function CreateItem($conn,$table1,$set){
     echo "Item Creation Failed";
 }
 
-/*
-function ShowItem($conn,$set){
-  $sql = "SELECT DISTINCT * FROM `ItemCard` JOIN `ItemNote` JOIN `ItemLogin` ON ItemCard.ID_Folder = $_SESSION[ID_User];";
-  if ($result = $conn->query($sql)) {
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-    return $row;
-  } else {
-    echo "Query Failed";
-  }
-}
-*/
 
 function ShowFolder($conn,$set){
   $sql = "SELECT `ID`,`name` FROM `Folders` WHERE $set;";
@@ -61,8 +50,18 @@ function ShowFolder($conn,$set){
     echo "Query Failed";
 }
 
-function ShowItemsLogin($conn,$set){
-  $sql = "SELECT DISTINCT `uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
+function ShowItems($conn,$set, $table1){
+  switch ($table1){
+    case 'ItemLogin':
+      $sql = "SELECT DISTINCT `Folders`.`name`,`uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
+      break;
+    case 'ItemNote':
+      $sql = "SELECT DISTINCT `Folders`.`name`,`name`,`text` FROM `ItemNote` JOIN `Folders` ON $set;";
+      break;
+    case 'ItemCard':
+      $sql = "SELECT DISTINCT `Folders`.`name`,`number`,`term`,`cvv` FROM `ItemCard` JOIN `Folders` ON $set;";
+      break;
+  }
   if ($result = $conn->query($sql)) {
     $options = [];
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {

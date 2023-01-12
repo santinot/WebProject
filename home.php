@@ -58,24 +58,24 @@ if (!isset($_SESSION['ID_User'])) {
         <div class="row">
            <!-- Colonna di sinistra -->
           <div class="col-sm text-center">
-            <div class="card border-dark" style="width: 15rem;">
+            <div class="card border-dark" style="width: 16rem;">
               <div class="card-header">Tipi</div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><button class="btn btn-outline-dark">
                   <img src="img/list-check.svg" id="icon-box"  class="bi bi-list-check mx-3" width="30" height="30">Tutti gli oggetti..</button>
                 </li>
-                <li class="list-group-item"><button class="btn btn-outline-dark">
-                  <img src="img/login.svg" id="icon-box"  class="bi bi-list-check mx-2" width="30" height="30">Login</button>
+                <li class="list-group-item"><button class="btn btn-outline-dark" id="loginBtn">
+                  <img src="img/login.svg" class="bi bi-list-check mx-2" width="30" height="30">Login</button>
                 </li>
-                <li class="list-group-item"><button class="btn btn-outline-dark">
-                  <img src="img/card.svg" id="icon-box"  class="bi bi-list-check mx-2" width="30" height="30">Carte</button>
+                <li class="list-group-item"><button class="btn btn-outline-dark" id="cardBtn">
+                  <img src="img/card.svg" class="bi bi-list-check mx-2" width="30" height="30">Carte</button>
                 </li>
-                <li class="list-group-item"><button class="btn btn-outline-dark">
-                  <img src="img/note.svg" id="icon-box"  class="bi bi-list-check mx-2" width="30" height="30">Note</button>
+                <li class="list-group-item"><button class="btn btn-outline-dark" id="noteBtn">
+                  <img src="img/note.svg"  class="bi bi-list-check mx-2" width="30" height="30">Note</button>
                 </li>
               </ul>
             </div>
-            <div class="card border-dark" style="width: 15rem;">
+            <div class="card border-dark" style="width: 16rem;">
               <div class="card-header">Cartelle</div>
               <ul class="list-group list-group-flush">
               <li class="list-group-item"><button class="btn btn-outline-dark">
@@ -89,16 +89,7 @@ if (!isset($_SESSION['ID_User'])) {
           
            <!-- Colonna di destra -->            
           <div class="col-sm-8 text-center" id="division">
-          <!-- Tabella 
-          <table id="itemsTable" class="table table-borderless table-striped table-earning">
-            <thead>
-              <tr>
-                <th>date</th>
-                <th>file name</th>
-              </tr>
-            </thead>
-          <tbody id="tableBody"></tbody>
-        </table>-->
+          <table id="loginTable"></table>
 
 
 
