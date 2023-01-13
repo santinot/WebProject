@@ -24,7 +24,7 @@ switch ($method) {
 
     if($table1 === 'ItemLogin' || $table1 === 'ItemNote' || $table1 === 'ItemCard'){
       $set = '';
-      $set = '`Folders`.`ID_User`=' . $_SESSION['ID_User'];
+      $set = '`'.$table1.'`.`ID_Folder` = `Folders`.`ID` AND `Folders`.`ID_User`=' . $_SESSION['ID_User'];
       ShowItems($conn,$set, $table1);
     }
     

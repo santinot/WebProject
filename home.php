@@ -64,13 +64,13 @@ if (!isset($_SESSION['ID_User'])) {
                 <li class="list-group-item"><button class="btn btn-outline-dark">
                   <img src="img/list-check.svg" id="icon-box"  class="bi bi-list-check mx-3" width="30" height="30">Tutti gli oggetti..</button>
                 </li>
-                <li class="list-group-item"><button class="btn btn-outline-dark" id="loginBtn">
+                <li class="list-group-item"><button class="btn btn-outline-dark" id="loginBtn" value="ItemLogin">
                   <img src="img/login.svg" class="bi bi-list-check mx-2" width="30" height="30">Login</button>
                 </li>
-                <li class="list-group-item"><button class="btn btn-outline-dark" id="cardBtn">
+                <li class="list-group-item"><button class="btn btn-outline-dark" id="cardBtn" value="ItemCard">
                   <img src="img/card.svg" class="bi bi-list-check mx-2" width="30" height="30">Carte</button>
                 </li>
-                <li class="list-group-item"><button class="btn btn-outline-dark" id="noteBtn">
+                <li class="list-group-item"><button class="btn btn-outline-dark" id="noteBtn" value="ItemNote">
                   <img src="img/note.svg"  class="bi bi-list-check mx-2" width="30" height="30">Note</button>
                 </li>
               </ul>
@@ -89,7 +89,7 @@ if (!isset($_SESSION['ID_User'])) {
           
            <!-- Colonna di destra -->            
           <div class="col-sm-8 text-center" id="division">
-          <table id="loginTable"></table>
+          <table id="myTable"></table>
 
 
 

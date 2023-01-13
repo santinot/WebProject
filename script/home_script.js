@@ -1,6 +1,6 @@
-function generateTable(data) {
+function generateTable(data, headers) {
    // creates a <table> element and a <tbody> element
-  const tbl = document.getElementById("loginTable");
+  const tbl = document.getElementById("myTable");
   tbl.innerHTML = "";
   const tblHead = document.createElement("thead");
   const tblBody = document.createElement("tbody");
@@ -12,17 +12,19 @@ function generateTable(data) {
   cell.appendChild(cellText);
   row.appendChild(cell);
   const cell2 = document.createElement("th");
-  const cellText2 = document.createTextNode("URI");
+  const cellText2 = document.createTextNode(headers.fLabel);
   cell2.appendChild(cellText2);
   row.appendChild(cell2);
   const cell3 = document.createElement("th");
-  const cellText3 = document.createTextNode("USERNAME");
+  const cellText3 = document.createTextNode(headers.sLabel);
   cell3.appendChild(cellText3);
   row.appendChild(cell3);
-  const cell4 = document.createElement("th");
-  const cellText4 = document.createTextNode("PASSWORD");
-  cell4.appendChild(cellText4);
-  row.appendChild(cell4);
+  if(headers.tLabel != null){
+    const cell4 = document.createElement("th");
+    const cellText4 = document.createTextNode(headers.tLabel);
+    cell4.appendChild(cellText4);
+    row.appendChild(cell4);
+  }
 
   tblHead.appendChild(row);
   tbl.appendChild(tblHead);
@@ -41,18 +43,19 @@ function generateTable(data) {
       cell.appendChild(cellText);
       row.appendChild(cell);
       const cell2 = document.createElement("td");
-      const cellText2 = document.createTextNode(data[i]['uri']);
+      const cellText2 = document.createTextNode(data[i][headers.fValue]);
       cell2.appendChild(cellText2);
       row.appendChild(cell2);
       const cell3 = document.createElement("td");
-      const cellText3 = document.createTextNode(data[i]['username']);
+      const cellText3 = document.createTextNode(data[i][headers.sValue]);
       cell3.appendChild(cellText3);
       row.appendChild(cell3);
+      if(headers.tValue != null){
       const cell4 = document.createElement("td");
-      const cellText4 = document.createTextNode(data[i]['password']);
+      const cellText4 = document.createTextNode(data[i][headers.tValue]);
       cell4.appendChild(cellText4);
       row.appendChild(cell4);
-      
+      }
   
       // add the row to the end of the table body
       tblBody.appendChild(row);
@@ -64,26 +67,41 @@ function generateTable(data) {
   document.getElementById('division').appendChild(tbl);
   // sets the border attribute of tbl to '2'
   tbl.setAttribute("border", "2");
-  tbl.setAttribute("id", "loginTable");
   tbl.classList.add("myTable");
-  }
+}
 
-window.onload = function() {
-  document.getElementById("loginBtn").addEventListener("click", function() {
+
+ function getItems(btn, headers){
     $.ajax({
         type: "GET",
-        url: "api.php/ItemLogin",
+        url: "api.php/" + btn,
         success: function(data) {
+          if(data == "[]"){
+            alert("Nessun elemento presente");
+            return;
+          }
             var data = JSON.parse(data);
             console.log(data);
-            generateTable(data);
+            generateTable(data, headers);
         },
         error: function(data) {
             console.log(data, "error");
         }
     });
+  }
+
+var loginHeaders = {fLabel:"URI", sLabel:"USERNAME", tLabel:"PASSWORD", fValue:"uri", sValue:"username", tValue:"password"};
+var cardHeaders = {fLabel:"NUMERO", sLabel:"SCADENZA", tLabel:"CVV", fValue:"number", sValue:"term", tValue:"cvv"};
+var noteHeaders = {fLabel:"NOME", sLabel:"TESTO", tLabel:null, fValue:"name", sValue:"text", tValue:null};
+
+window.onload = function() {
+  document.getElementById("loginBtn").addEventListener("click",function(){
+    getItems(document.getElementById("loginBtn").value, loginHeaders);
   });
-
-
-
+  document.getElementById("cardBtn").addEventListener("click",function(){
+    getItems(document.getElementById("cardBtn").value, cardHeaders);
+  });
+  document.getElementById("noteBtn").addEventListener("click",function(){
+    getItems(document.getElementById("noteBtn").value, noteHeaders);
+  });
 }
