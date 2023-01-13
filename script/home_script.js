@@ -92,7 +92,7 @@ function generateTable(data, headers) {
 
 var loginHeaders = {fLabel:"URI", sLabel:"USERNAME", tLabel:"PASSWORD", fValue:"uri", sValue:"username", tValue:"password"};
 var cardHeaders = {fLabel:"NUMERO", sLabel:"SCADENZA", tLabel:"CVV", fValue:"number", sValue:"term", tValue:"cvv"};
-var noteHeaders = {fLabel:"NOME", sLabel:"TESTO", tLabel:null, fValue:"name", sValue:"text", tValue:null};
+var noteHeaders = {fLabel:"NOME", sLabel:"TESTO", tLabel:null, fValue:"title", sValue:"text", tValue:null};
 
 window.onload = function() {
   document.getElementById("loginBtn").addEventListener("click",function(){

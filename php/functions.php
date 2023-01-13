@@ -56,7 +56,7 @@ function ShowItems($conn,$set, $table1){
       $sql = "SELECT DISTINCT `Folders`.`name`,`uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
       break;
     case 'ItemNote':
-      $sql = "SELECT DISTINCT `Folders`.`name`,`ItemNote`.`name`,`text` FROM `ItemNote` JOIN `Folders` ON $set;";
+      $sql = "SELECT DISTINCT `Folders`.`name`,`ItemNote`.`name` AS `title`,`text` FROM `ItemNote` JOIN `Folders` ON $set;";
       break;
     case 'ItemCard':
       $sql = "SELECT DISTINCT `Folders`.`name`,`number`,`term`,`cvv` FROM `ItemCard` JOIN `Folders` ON $set;";
