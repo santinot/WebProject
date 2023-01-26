@@ -3,7 +3,7 @@ body{
 }
 
 .container {
-    max-width: 1536px;
+    max-width: 1280px;
   }
 div.card-header{
   background-color: #97D49B;
@@ -28,5 +28,18 @@ img.bi{
   width: 30px;
   height: 30px;
 }
-  
+img.bi2{
+  width: 15px;
+  height: 15px;
+}
+ul.dropdown-menu{
+  width: auto;
+  height: auto;
+}
+#mainBox{
+  max-width: 900px;
+}
+#division{
+  max-width: 1280px;
+}
   

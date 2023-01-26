@@ -8,7 +8,7 @@ function generateTable(data, headers) {
   const row = document.createElement("tr");
   const cell = document.createElement("th");
 
-  const cellText = document.createTextNode("CARTELLA");
+  const cellText = document.createTextNode("Cartella");
   cell.appendChild(cellText);
   row.appendChild(cell);
   const cell2 = document.createElement("th");
@@ -90,13 +90,17 @@ function generateTable(data, headers) {
     });
   }
 
-var loginHeaders = {fLabel:"URI", sLabel:"USERNAME", tLabel:"PASSWORD", fValue:"uri", sValue:"username", tValue:"password"};
-var cardHeaders = {fLabel:"NUMERO", sLabel:"SCADENZA", tLabel:"CVV", fValue:"number", sValue:"term", tValue:"cvv"};
-var noteHeaders = {fLabel:"NOME", sLabel:"TESTO", tLabel:null, fValue:"title", sValue:"text", tValue:null};
+var loginHeaders = {fLabel:"URI", sLabel:"Username", tLabel:"Password", fValue:"uri", sValue:"username", tValue:"password"};
+var cardHeaders = {fLabel:"Numero", sLabel:"Scadenza", tLabel:"CVV", fValue:"number", sValue:"term", tValue:"cvv"};
+var noteHeaders = {fLabel:"Nome", sLabel:"Testo", tLabel:null, fValue:"title", sValue:"text", tValue:null};
 
 window.onload = function() {
   document.getElementById("loginBtn").addEventListener("click",function(){
     getItems(document.getElementById("loginBtn").value, loginHeaders);
+    
+
+
+
   });
   document.getElementById("cardBtn").addEventListener("click",function(){
     getItems(document.getElementById("cardBtn").value, cardHeaders);
