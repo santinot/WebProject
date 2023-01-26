@@ -15,7 +15,8 @@ if (!isset($_SESSION['ID_User'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="script/home_script.js"></script>
     <link href="style/home.css" rel="stylesheet">
@@ -33,7 +34,7 @@ if (!isset($_SESSION['ID_User'])) {
   </head>
 
   <body>
-    <div class="container py-3 ">
+    <div class="container py-3">
       <header class="form-signin w-100 m-auto">
         <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
           <a href="home.php" class="d-flex align-items-center text-dark text-decoration-none">
@@ -61,8 +62,8 @@ if (!isset($_SESSION['ID_User'])) {
             <div class="card border-dark" style="width: 16rem;">
               <div class="card-header">Tipi</div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><button class="btn btn-outline-dark">
-                  <img src="img/list-check.svg" id="icon-box"  class="bi bi-list-check mx-3" width="30" height="30">Tutti gli oggetti..</button>
+                <li class="list-group-item"><button class="btn btn-outline-dark" id="allItemsBtn">
+                  <img src="img/list-check.svg" class="bi bi-list-check mx-3" width="30" height="30">Tutti gli oggetti..</button>
                 </li>
                 <li class="list-group-item"><button class="btn btn-outline-dark" id="loginBtn" value="ItemLogin">
                   <img src="img/login.svg" class="bi bi-list-check mx-2" width="30" height="30">Login</button>
