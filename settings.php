@@ -16,7 +16,7 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-      <script src="script/settings.js"></script>
+      <script src="script/settings_script.js"></script>
       <link href="style/home.css" rel="stylesheet">
       <script>
          function logout() {
@@ -58,19 +58,18 @@
                     <div class="row">
                         <div class="col m-2">
                             <h5 class="card-title">Nome</h5>
-                            <p class="card-text">With supporting text belo<img src="img/pencil.svg" role="button" class="bi2 mx-2"></p>
-                            
+                            <p class="card-text" id="fnameP"></p>
                         </div>
                         <div class="col m-2">
                             <h5 class="card-title">Cognome</h5>
-                            <p class="card-text">With supporting text below as a.<img src="img/pencil.svg" role="button" class="bi2 mx-2"></p>
+                            <p class="card-text" id="lnameP"></p>
                             
                         </div>
                     </div>
                     <div class="row">
                         <div class="col m-2">
                             <h5 class="card-title">Cellulare</h5>
-                            <p class="card-text">With supporting text belo<img src="img/pencil.svg" role="button" class="bi2 mx-2"></p>
+                            <p class="card-text" id="phoneP"></p>
                         </div>
                     </div>
                 </div>
@@ -81,11 +80,11 @@
                     <div class="row">
                         <div class="col m-2">
                             <h5 class="card-title">Email</h5>
-                            <p class="card-text">With supporting text belo<img src="img/pencil.svg" role="button" class="bi2 mx-2"></p>
+                            <p class="card-text" id="emailP"></p>
                         </div>
                         <div class="col m-2">
                             <h5 class="card-title">Password</h5>
-                            <p class="card-text">With supporting text below as a.<img src="img/pencil.svg" role="button" class="bi2 mx-2"></p>
+                            <p class="card-text">Impossibile modificare</p>
                         </div>
                     </div>
                     <div class="row">

@@ -74,6 +74,19 @@ function ShowItems($conn,$set, $table1){
     echo "Query Failed";
 }
 
+function InfoUser($conn, $set){
+  $sql = "SELECT `Info`.`fname`, `Info`.`lname`, `Info`.`phone`, `Users`.`email` 
+          FROM `Info` JOIN `Users` ON `Info`.`ID_User` = `Users`.`ID` AND $set;";
+  if ($result = $conn->query($sql)) {
+    $options = [];
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+      array_push($options, $row);
+    }
+    echo json_encode($options);
+  } else
+    echo "Query Failed";
+}
+
 
 
 ?>

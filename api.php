@@ -18,14 +18,20 @@ switch ($method) {
     }
 
     if($table1 === 'Logout'){
-        unset($_SESSION['ID_User']);
-        session_destroy();
+      unset($_SESSION['ID_User']);
+      session_destroy();
     }
 
     if($table1 === 'ItemLogin' || $table1 === 'ItemNote' || $table1 === 'ItemCard'){
       $set = '';
       $set = '`'.$table1.'`.`ID_Folder` = `Folders`.`ID` AND `Folders`.`ID_User`=' . $_SESSION['ID_User'];
       ShowItems($conn,$set, $table1);
+    }
+
+    if($table1 === 'Users'){
+      $set = '';
+      $set = '`Users`.`ID`=' . $_SESSION['ID_User'];
+      InfoUser($conn,$set);
     }
     
     break;
