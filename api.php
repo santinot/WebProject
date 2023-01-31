@@ -33,9 +33,14 @@ switch ($method) {
       $set = '`Users`.`ID`=' . $_SESSION['ID_User'];
       InfoUser($conn,$set);
     }
-    
     break;
   case 'PUT':
+    if($table1 === 'Info'){
+    }
+    
+    
+    
+    
     break;
   case 'POST':
     if($_POST['action'] === 'Registration'){

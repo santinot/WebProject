@@ -35,12 +35,10 @@
          <header class="form-signin w-100 m-auto">
             <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
                <a href="home.php" class="d-flex align-items-center text-dark text-decoration-none">
-               <img src="img/icon.png" width="50" height="45" class="me-2">
-               <span class="fs-4">Locker</span>
+                  <img src="img/logo3.png" width="300" height="100" class="me-2">
                </a>
                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                   <a class="me-3 py-2 text-dark text-decoration-none" href="home.php">Oggetti</a>
-                  <a class="me-3 py-2 text-dark text-decoration-none" href="tools.php">Strumenti</a>
                   <a class="me-3 py-2 text-dark text-decoration-none" href="insert.php">Inserisci</a>
                   <a class="me-3 py-2 text-dark text-decoration-none nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Impostazioni</a>
                   <ul class="dropdown-menu">

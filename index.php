@@ -20,7 +20,7 @@
     
     <main class="form-signin w-100 m-auto">
     <div>
-        <img class='mb-2' src="img/logo3.png" width="300" height="150">
+        <img class='mb-2' src="img/logo3.png" width="300" height="100">
         <h1 class="h3 mb-3 fw-normal">Effettua l'accesso</h1>
 
         <div class="form-floating">
