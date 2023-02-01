@@ -1,12 +1,13 @@
 <?php
 require_once('php/db_connection.php');
 require_once('php/functions.php');
+parse_str(file_get_contents('php://input'), $_PUT);
+parse_str(file_get_contents('php://input'), $_DELETE);
 session_start();
 
 $conn = OpenConnection();
 
 $method = $_SERVER['REQUEST_METHOD'];
-
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 $table1 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
 switch ($method) {
@@ -34,15 +35,25 @@ switch ($method) {
       InfoUser($conn,$set);
     }
     break;
+
   case 'PUT':
-    if($table1 === 'Info'){
-    }
-    
-    
-    
-    
+    if($table1 === 'Info' || $table1 === 'Users'){
+      var_dump($_PUT);
+      $columns = preg_replace('/[^a-z0-9_]+/i','',array_keys($_PUT));
+      $values = array_map(function ($value) use ($conn) {
+        if ($value===null) return null;
+          return mysqli_real_escape_string($conn,(string)$value);
+      },array_values($_PUT));
+      $set = '';
+      for ($i=0;$i<count($columns);$i++) {
+        $set .= ($i === 1 ? '"' : '`'). $values[$i] . ($i === 1 ? '"' : '`=') ;
+      }
+      $set .= ' WHERE `' .($table1 === 'Info' ? 'ID_User' : 'ID' ). '` = ' . $_SESSION['ID_User'];
+      UpdateInfo($conn,$set,$table1);
+    }  
     break;
-  case 'POST':
+  
+    case 'POST':
     if($_POST['action'] === 'Registration'){
         $table2 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
         $columns = preg_replace('/[^a-z0-9_]+/i','',array_keys($_POST));

@@ -33,7 +33,7 @@ function CreateItem($conn,$table1,$set){
   $sql = "INSERT INTO `$table1` SET $set;";
   var_dump($sql);
   if($conn->query($sql))
-    echo "Item created";
+    echo "Item Created";
   else
     echo "Item Creation Failed";
 }
@@ -87,6 +87,14 @@ function InfoUser($conn, $set){
     echo "Query Failed";
 }
 
+function UpdateInfo($conn,$set,$table1){
+  $sql = "UPDATE `$table1` SET $set;";
+  var_dump($sql);
+  if ($conn->query($sql))
+    echo "Update Successful";
+  else
+    echo "Update Failed";
+}
 
 
 ?>

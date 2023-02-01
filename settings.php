@@ -50,45 +50,31 @@
       </header>
       <div class="container">
         <div class="row">
-            <div class="col">
-                <div class="card">
-                    <h5 class="card-header">Informazioni Utente</h5>
-                    <div class="row">
-                        <div class="col m-2">
-                            <h5 class="card-title">Nome</h5>
-                            <p class="card-text" id="fnameP"></p>
-                        </div>
-                        <div class="col m-2">
-                            <h5 class="card-title">Cognome</h5>
-                            <p class="card-text" id="lnameP"></p>
-                            
-                        </div>
+            <div class="card w-50" id="mycard">
+                <h5 class="card-header">Informazioni Utente</h5>
+                <div class="row">
+                    <div class="col m-2">
+                        <h5 class="card-title">Nome</h5>
+                        <p class="card-text" id="fname"></p>
                     </div>
-                    <div class="row">
-                        <div class="col m-2">
-                            <h5 class="card-title">Cellulare</h5>
-                            <p class="card-text" id="phoneP"></p>
-                        </div>
+                    <div class="col m-2">
+                        <h5 class="card-title">Cognome</h5>
+                        <p class="card-text" id="lname"></p>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <h5 class="card-header">Informazioni Account</h5>
-                    <div class="row">
-                        <div class="col m-2">
-                            <h5 class="card-title">Email</h5>
-                            <p class="card-text" id="emailP"></p>
-                        </div>
-                        <div class="col m-2">
-                            <h5 class="card-title">Password</h5>
-                            <p class="card-text">Impossibile modificare</p>
-                        </div>
+                <div class="row">
+                    <div class="col m-2">
+                        <h5 class="card-title">Cellulare</h5>
+                        <p class="card-text" id="phone"></p>
                     </div>
-                    <div class="row">
-                        <div class="col m-2">
-                            <button type="button" class="btn btn-danger">Elimina Account</button>
-                        </div>
+                    <div class="col m-2">
+                        <h5 class="card-title">Email</h5>
+                        <p class="card-text" id="email"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m-2">
+                        <button type="button" class="btn btn-danger">Elimina Account</button>
                     </div>
                 </div>
             </div>

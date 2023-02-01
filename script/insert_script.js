@@ -7,7 +7,7 @@
         var folder = document.getElementById("folder").value;
         var star = 0;
         if (document.getElementById('favourite').checked == true) 
-            var star = 1;
+            star = 1;
         $.ajax({
             type: "POST",
             url: "api.php/ItemCard",
@@ -21,8 +21,12 @@
             },
             success: function(data) {
                 console.log(data);
-                if(data == "Item Creation Failed")
-                    alert("Item Creation Failed");
+                alert("Carta aggiunta");
+                window.location.reload();
+            },
+            error: function(data){
+                console.log(data);
+                alert("Errore");
             }
         })
     };
@@ -34,7 +38,7 @@
         var folder = document.getElementById("folder").value;
         var star = 0;
         if (document.getElementById('favourite').checked == true) 
-            var star = 1;
+            star = 1;
         $.ajax({
             type: "POST",
             url: "api.php/ItemLogin",
@@ -48,8 +52,12 @@
             },
             success: function(data) {
                 console.log(data);
-                if(data == "Item Creation Failed")
-                    alert("Item Creation Failed");
+                alert("Login aggiunto");
+                window.location.reload();
+            },
+            error: function(data){
+                console.log(data);
+                alert("Errore");
             }
         })
     };
@@ -60,7 +68,7 @@
         var folder = document.getElementById("folder").value;
         var star = 0;
         if (document.getElementById('favourite').checked == true) 
-            var star = 1;
+            star = 1;
         $.ajax({
             type: "POST",
             url: "api.php/ItemNote",
@@ -73,8 +81,12 @@
             },
             success: function(data) {
                 console.log(data);
-                if(data == "Item Creation Failed")
-                    alert("Item Creation Failed");
+                alert("Nota aggiunta");
+                window.location.reload();
+            },
+            error: function(data){
+                console.log(data);
+                alert("Errore");
             }
         })
     };
@@ -149,19 +161,13 @@
     });
     
     document.getElementById('sendBtn').addEventListener('click', function(){
-        if(document.getElementById('selectItem').value === 'Login'){
-            CreateItemLogin();
-            alert("Credenziali inserite con successo");
-            window.location.reload();
-        }else if(document.getElementById('selectItem').value === 'Card'){
+        if(document.getElementById('selectItem').value === 'Login')
+            CreateItemLogin();                
+        else if(document.getElementById('selectItem').value === 'Card')
             CreateItemCard();
-            alert("Carta inserita con successo");
-            window.location.reload();
-        }else if(document.getElementById('selectItem').value === 'Note'){
+        else if(document.getElementById('selectItem').value === 'Note')
             CreateItemNote();
-            alert("Nota creata con successo");
-            window.location.reload();
-        }
+        
     });
 
 

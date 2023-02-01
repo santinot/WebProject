@@ -97,10 +97,6 @@ var noteHeaders = {fLabel:"Nome", sLabel:"Testo", tLabel:null, fValue:"title", s
 window.onload = function() {
   document.getElementById("loginBtn").addEventListener("click",function(){
     getItems(document.getElementById("loginBtn").value, loginHeaders);
-    
-
-
-
   });
   document.getElementById("cardBtn").addEventListener("click",function(){
     getItems(document.getElementById("cardBtn").value, cardHeaders);
