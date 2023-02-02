@@ -74,7 +74,7 @@
                 </div>
                 <div class="row">
                     <div class="col m-2">
-                        <button type="button" class="btn btn-danger">Elimina Account</button>
+                        <button type="button" class="btn btn-danger" id="deleteAccount">Elimina Account</button>
                     </div>
                 </div>
             </div>

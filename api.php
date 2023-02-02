@@ -108,7 +108,12 @@ switch ($method) {
   break;
 
   case 'DELETE':
-    break;
+    if ($table1 === 'Users') {
+      $set = '';
+      $set = '`ID`=' . $_SESSION['ID_User'];
+      if (DeleteUser($conn, $set) === true)
+        session_destroy();
+    }
 }
 
 

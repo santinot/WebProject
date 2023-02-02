@@ -58,13 +58,13 @@
                         <li class="list-group-item"><button class="btn btn-outline-dark" id="allItemsBtn">
                            <img src="img/list-check.svg" class="bi bi-list-check mx-3" width="30" height="30">Tutti gli oggetti..</button>
                         </li>
-                        <li class="list-group-item"><button class="btn btn-outline-dark" id="loginBtn" value="ItemLogin">
+                        <li class="list-group-item"><button class="btn btn-outline-dark tableBtn" id="loginBtn" value="ItemLogin">
                            <img src="img/login.svg" class="bi mx-2">Login</button>
                         </li>
-                        <li class="list-group-item"><button class="btn btn-outline-dark" id="cardBtn" value="ItemCard">
+                        <li class="list-group-item"><button class="btn btn-outline-dark tableBtn" id="cardBtn" value="ItemCard">
                            <img src="img/card.svg" class="bi mx-2">Carte</button>
                         </li>
-                        <li class="list-group-item"><button class="btn btn-outline-dark" id="noteBtn" value="ItemNote">
+                        <li class="list-group-item"><button class="btn btn-outline-dark tableBtn" id="noteBtn" value="ItemNote">
                            <img src="img/note.svg"  class="bi mx-2">Note</button>
                         </li>
                      </ul>
@@ -81,23 +81,7 @@
                </div>
                <!-- Colonna di destra -->            
                <div class="col-sm-8 text-center m-lg-3" id="division">
-                  <table id="myTable"></table>
-                  <!-- 
-                     <ul class="list-group" id="homeList">
-                       <li class="list-group-item d-flex justify-content-between align-items-center">
-                         <img src="img/login.svg" class="bi">
-                         A list item
-                         <span class="badge bg-primary rounded-pill">14</span>
-                       </li>
-                       <li class="list-group-item d-flex justify-content-between align-items-center">
-                         A second list item
-                         <span class="badge bg-primary rounded-pill">2</span>
-                       </li>
-                       <li class="list-group-item d-flex justify-content-between align-items-center">
-                         A third list item
-                         <span class="badge bg-primary rounded-pill">1</span>
-                       </li>
-                     </ul>-->
+                  <table id="myTable" class="table table-hover myTable"></table>
                </div>
             </div>
          </div>

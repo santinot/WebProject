@@ -10,17 +10,15 @@ div.card-header{
 .myTable {
   width: 100%;
   padding: 25px;
-  color: black;
   background-color: white;
-  font-size: 25px;
-  box-sizing: border-box;
+  border: 1px solid black;
+  text-align: left;
 }
 .myTableHead {
   width: 100%;
   padding: 25px;
   background-color: #97D49B;
-  color: white;
-  font-size: 25px;
+  color: black;
   box-sizing: border-box;
 }
 img.bi{
@@ -46,5 +44,9 @@ ul.dropdown-menu{
   max-width: 1280px;
   margin: auto;
   width: 70%;
+}
+.mycell{
+  width: 20vw;
+  word-break: break-all;
 }
   

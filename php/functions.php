@@ -96,5 +96,20 @@ function UpdateInfo($conn,$set,$table1){
     echo "Update Failed";
 }
 
+function DeleteUser($conn,$set){
+  $sql= "DELETE FROM `Users` WHERE $set";
+  if($conn->query($sql)){
+    echo "Delete Successful";
+    return true;
+  }else{
+    echo "Delete Failed";
+    return false;
+  }
+    
+}
+
+function qualcosa(){
+  //SELECT * FROM ItemLogin WHERE ItemLogin.ID_Folder in (3,4,5);
+}
 
 ?>

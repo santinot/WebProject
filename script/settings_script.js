@@ -82,10 +82,31 @@ function GetValues(){
     });
 }
 
+function DeleteAccount(){
+    $.ajax({
+        type: "DELETE",
+        url: "api.php/Users",
+        success: function (data) {
+            if(data.search("Delete Successful") != -1 ){
+                alert("Account eliminato");
+                window.location.reload();
+            }
+        },
+        error: function(data) {
+            console.log("error" + data);
+        }
+    });
+}
+
+
+
 
 window.onload = function() {
-   GetValues(); 
-
+    GetValues(); 
+    document.getElementById("deleteAccount").addEventListener("click", function(){
+        if(confirm("Sei sicuro di voler eliminare il tuo account?"))
+            DeleteAccount();
+    });
 }
 
             
