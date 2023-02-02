@@ -142,7 +142,6 @@
         type: "GET",
         url: "api.php/Folders", 
         success: function(data) {
-            
             data = JSON.parse(data);
             for(var i = 0; i < data.length; i++){
                 var opt = document.createElement('option');

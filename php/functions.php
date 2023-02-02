@@ -30,7 +30,9 @@ function CheckData($conn,$table1,$set,$pwd){
 }
 
 function CreateItem($conn,$table1,$set){
-  $sql = "INSERT INTO `$table1` SET $set;";
+  $sql = "INSERT INTO `$table1` SET $set";
+  if ($table1 === 'Folders') 
+    $sql .= ",`ID_User` = " . $_SESSION['ID_User'] . ";";
   var_dump($sql);
   if($conn->query($sql))
     echo "Item Created";
@@ -41,6 +43,7 @@ function CreateItem($conn,$table1,$set){
 
 function ShowFolder($conn,$set){
   $sql = "SELECT `ID`,`name` FROM `Folders` WHERE $set;";
+
   if ($result = $conn->query($sql)) {
     $options = [];
     while($row = $result->fetch_array(MYSQLI_ASSOC))
@@ -108,8 +111,9 @@ function DeleteUser($conn,$set){
     
 }
 
-function qualcosa(){
-  //SELECT * FROM ItemLogin WHERE ItemLogin.ID_Folder in (3,4,5);
+function ValusInFolder($conn,$set){
+  $sql = "SELECT `ID` FROM `Folders` WHERE $set;";
+  $sql2 = "SELECT * FROM ItemLogin WHERE ItemLogin.ID_Folder in (3,4,5)";
 }
 
 ?>
