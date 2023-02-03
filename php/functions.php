@@ -111,9 +111,14 @@ function DeleteUser($conn,$set){
     
 }
 
-function ValusInFolder($conn,$set){
-  $sql = "SELECT `ID` FROM `Folders` WHERE $set;";
-  $sql2 = "SELECT * FROM ItemLogin WHERE ItemLogin.ID_Folder in (3,4,5)";
+function ShowItemsFolder($conn,$set){
+  $sql = "SELECT DISTINCT `Folders`.`name`,`uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
+  $sql .= "SELECT DISTINCT `Folders`.`name`,`ItemNote`.`name` AS `title`,`text` FROM `ItemNote` JOIN `Folders` ON $set;";
+  $sql .= "SELECT DISTINCT `Folders`.`name`,`number`,`term`,`cvv` FROM `ItemCard` JOIN `Folders` ON $set;";
+    
+
+
+
 }
 
 ?>

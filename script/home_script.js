@@ -1,4 +1,4 @@
-function getItems(btn) {
+function getItems(btn,bool) {
   $.ajax({
     type: "GET",
     url: "api.php/" + btn,
@@ -9,7 +9,7 @@ function getItems(btn) {
       }
       var data = JSON.parse(data);
       console.log(data);
-      CreateTable(data,btn.replace("Item",""));
+      CreateTableItems(data,btn.replace("Item",""),bool);
     },
     error: function (data) {
       console.log(data, "error");
@@ -17,7 +17,8 @@ function getItems(btn) {
   });
 }
 
-function CreateTable(data,key){
+
+function CreateTableItems(data,key,bool){
   var values = {"Login":['name','uri','username','password'],
                 "Card":['name','number','term','cvv'],
                 "Note":['name','title','text']
@@ -26,7 +27,8 @@ function CreateTable(data,key){
                 "Card":['Cartella','Numero','Scadenza','CVV'],
                 "Note":['Cartella','Nome','Testo']
               };
-  document.getElementById("myTable").innerHTML = "";
+  if(bool)
+    document.getElementById("myTable").innerHTML = "";
   var tbl = document.getElementById("myTable");
   var tblHead = document.createElement("thead");
   var rowHead = document.createElement("tr");
@@ -82,45 +84,60 @@ function CreateFolderBox(data){
     var btn = document.createElement("button");
 
     li.classList.add("list-group-item");
-    btn.classList.add("btn","btn-outline-dark");
+    btn.classList.add("btn","btn-outline-dark","tableBtn");
     btn.value = data[i].ID;
     btn.innerHTML = "<img src='img/archive.svg' class='bi mx-2'>" + data[i].name;
 
     ul.appendChild(li);
     li.appendChild(btn);
+
+    btn.addEventListener("click", function () {
+        if(!isNaN(btn.value)){
+          document.getElementById("myTable").innerHTML = "";
+          getItems("ItemLogin",false);
+          getItems("ItemCard",false);
+          getItems("ItemNote",false);
+        }
+      });
+  }
+}  
+
+  function AddFolder(){
+    var name = prompt("Inserisci il nome della cartella");
+    if (name == null || name == "") {
+      alert("Nome non valido");
+      return;
+    }
+    $.ajax({
+      type: "POST",
+      url: "api.php/Folders",
+      data: { 
+        action: "AddItem",
+        name: name      
+      },
+      success: function (data) {
+        console.log(data);
+        window.location.reload();
+      },
+      error: function (data) {
+        console.log(data, "error");
+      }
+    });
   }
   
-}
 
 window.onload = function () {
+  getFolders();
+
   Array.from(document.getElementsByClassName("tableBtn")).forEach(function (btn) {
     btn.addEventListener("click", function () {
-      getItems(btn.value);
-    });
+      if(isNaN(btn.value))
+        getItems(btn.value,true);
   });
+});
 
-getFolders();
 document.getElementById("newFolderBtn").addEventListener("click", function () {
-  var name = prompt("Inserisci il nome della cartella");
-  if (name == null || name == "") {
-    alert("Nome non valido");
-    return;
-  }
-  $.ajax({
-    type: "POST",
-    url: "api.php/Folders",
-    data: { 
-      action: "AddItem",
-      name: name      
-    },
-    success: function (data) {
-      console.log(data);
-      window.location.reload();
-    },
-    error: function (data) {
-      console.log(data, "error");
-    }
-  });
+  AddFolder();
 });
 
 
