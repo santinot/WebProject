@@ -58,36 +58,7 @@
                <option value="Card">Carta</option>
                <option value="Note">Nota</option>
             </select>
-            <div id="box" hidden>
-               <label id="input1" for="text1"></label>
-               <input type="text" class="form-control" id="text1">
-               <div class="row align-items-end">
-                  <div class="col">
-                     <label id="input2" for="text2"></label>
-                     <input type="text" class="form-control" id="text2">
-                  </div>
-                  <div class="col-4" id="colPassCheck">
-                     <input class="form-check-input" type="checkbox" id="showPass">
-                     <label class="form-check-label" for="showPass">Mostra Password</label>
-                  </div>
-               </div>
-               <label id="input3" for="text3"></label>
-               <input type="text" class="form-control" id="text3">
-               <textarea class="form-control" id="textBox" rows="3" placeholder="Nota" hidden></textarea>
-               <label id="input4" for="folder">Cartella</label>
-               <select class="form-select" id="folder" aria-label=".form-select-lg example">
-               </select>
-               <br>
-               <div class="row justify-content-between">
-                  <div class="col-4">
-                     <button type="button" id="sendBtn" class="btn btn-success">Inserisci</button>
-                  </div>
-                  <div class="col-4">
-                     <input class="form-check-input" type="checkbox" id="favourite">
-                     <label class="form-check-label" for="favourite">Aggiungi ai Preferiti</label>
-                  </div>
-               </div>
-            </div>
+            <div id="box" hidden></div>
          </div>
       </div>
    </body>

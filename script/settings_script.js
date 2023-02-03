@@ -104,7 +104,7 @@ function DeleteAccount(){
 window.onload = function() {
     GetValues(); 
     document.getElementById("deleteAccount").addEventListener("click", function(){
-        if(confirm("Sei sicuro di voler eliminare il tuo account?"))
+        if(confirm("Sei sicuro di voler eliminare il tuo account? Tutti i dati verranno perduti"))
             DeleteAccount();
     });
 }

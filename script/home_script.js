@@ -1,4 +1,4 @@
-function getItems(btn,bool) {
+function getItems(btn) {
   $.ajax({
     type: "GET",
     url: "api.php/" + btn,
@@ -9,7 +9,7 @@ function getItems(btn,bool) {
       }
       var data = JSON.parse(data);
       console.log(data);
-      CreateTableItems(data,btn.replace("Item",""),bool);
+      CreateTableItems(data,btn.replace("Item",""));
     },
     error: function (data) {
       console.log(data, "error");
@@ -17,8 +17,7 @@ function getItems(btn,bool) {
   });
 }
 
-
-function CreateTableItems(data,key,bool){
+function CreateTableItems(data,key,bool = true){
   var values = {"Login":['name','uri','username','password'],
                 "Card":['name','number','term','cvv'],
                 "Note":['name','title','text']
@@ -27,15 +26,30 @@ function CreateTableItems(data,key,bool){
                 "Card":['Cartella','Numero','Scadenza','CVV'],
                 "Note":['Cartella','Nome','Testo']
               };
-  if(bool)
+  if(bool){
     document.getElementById("myTable").innerHTML = "";
+    if(p = document.getElementById("index"))
+        p.remove();
+  }
   var tbl = document.getElementById("myTable");
+  var tblHead2 = document.createElement("thead");
+  var rowHead2 = document.createElement("tr");
+  
+  tblHead2.classList.add("myTableHead");
+  tbl.appendChild(tblHead2);
+  tblHead2.appendChild(rowHead2);
+  
   var tblHead = document.createElement("thead");
   var rowHead = document.createElement("tr");
   
   tblHead.classList.add("myTableHead");
   tbl.appendChild(tblHead);
   tblHead.appendChild(rowHead);
+
+  var cellHead2 = document.createElement("th");
+  var cellHeadText2 = document.createTextNode(key);
+  cellHead2.appendChild(cellHeadText2);
+  rowHead2.appendChild(cellHead2);
 
   for(var i = 0; i < headers[key].length; i++){
     var cellHead = document.createElement("th");
@@ -58,21 +72,25 @@ function CreateTableItems(data,key,bool){
 }
 
 function getFolders() {
-  $.ajax({
-    type: "GET",
-    url: "api.php/Folders",
-    success: function (data) {
-      if (data == "[]") {
-        alert("Nessuna cartella presente");
-        return;
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: "GET",
+      url: "api.php/Folders",
+      success: function (data) {
+        if (data == "[]") {
+          alert("Nessuna cartella presente");
+          reject(data);
+        }
+        var data = JSON.parse(data);
+        console.log(data);
+        CreateFolderBox(data);
+        resolve(data);
+      },
+      error: function (data) {
+        console.log(data, "error");
+        reject(data);
       }
-      var data = JSON.parse(data);
-      console.log(data);
-      CreateFolderBox(data);
-    },
-    error: function (data) {
-      console.log(data, "error");
-    }
+    });
   });
 }
 
@@ -83,65 +101,118 @@ function CreateFolderBox(data){
     var li = document.createElement("li");
     var btn = document.createElement("button");
 
+
     li.classList.add("list-group-item");
-    btn.classList.add("btn","btn-outline-dark","tableBtn");
+    li.innerHTML = "<img src='img/trash.svg' class='bi mx-2 trash' role='button' id='" + data[i].ID + "'>";
+    btn.classList.add("btn","btn-outline-dark","folderTableBtn");
+    btn.setAttribute("id",data[i].name + "Btn");
     btn.value = data[i].ID;
     btn.innerHTML = "<img src='img/archive.svg' class='bi mx-2'>" + data[i].name;
 
     ul.appendChild(li);
     li.appendChild(btn);
+    li.appendChild(btn);
 
     btn.addEventListener("click", function () {
-        if(!isNaN(btn.value)){
-          document.getElementById("myTable").innerHTML = "";
-          getItems("ItemLogin",false);
-          getItems("ItemCard",false);
-          getItems("ItemNote",false);
-        }
-      });
+      document.getElementById("myTable").innerHTML = "";
+      if(p = document.getElementById("index"))
+        p.remove();
+      var p = document.createElement("p");
+      p.setAttribute("id","index");
+      p.innerHTML = "Cartella: " + this.innerHTML.replace("<img src='img/archive.svg' class='bi mx-2'>","");
+      document.getElementById("division").append(p);
+      getFolderItems(this.value, "ItemLogin",false);
+      getFolderItems(this.value, "ItemCard", false);
+      getFolderItems(this.value, "ItemNote",false);
+    });
   }
 }  
 
-  function AddFolder(){
-    var name = prompt("Inserisci il nome della cartella");
-    if (name == null || name == "") {
-      alert("Nome non valido");
-      return;
+function getFolderItems(value, key, bool = true){
+  $.ajax({
+    type: "GET",
+    url: "api.php/FolderItems/" + value + "/" + key,
+    success: function (data) {
+      console.log(data);
+      var data = JSON.parse(data);
+      if (data == "")
+        return;
+      else
+        CreateTableItems(data, key.replace("Item",""), bool);
+    },
+    error: function (data) {
+      console.log(data, "error");
     }
-    $.ajax({
-      type: "POST",
-      url: "api.php/Folders",
-      data: { 
-        action: "AddItem",
-        name: name      
-      },
-      success: function (data) {
-        console.log(data);
-        window.location.reload();
-      },
-      error: function (data) {
-        console.log(data, "error");
-      }
-    });
+  });
+}
+
+function AddFolder(){
+  var name = prompt("Inserisci il nome della cartella");
+  if (name == null || name == "") {
+    alert("Nome non valido");
+    return;
   }
-  
+  $.ajax({
+    type: "POST",
+    url: "api.php/Folders",
+    data: { 
+      action: "AddItem",
+      name: name      
+    },
+    success: function (data) {
+      console.log(data);
+      window.location.reload();
+    },
+    error: function (data) {
+      console.log(data, "error");
+    }
+  });
+}
+
+function DeleteFolder(value){
+  $.ajax({
+    type: "DELETE",
+    url: "api.php/Folders/" + value,
+    success: function (data) {
+      console.log(data);
+      if(data.search("Delete Successful") != -1 ){
+        alert("Cartella eliminata");
+        window.location.reload();
+      }else if (data.search("Impossibile") != -1 )
+        alert("Impossible eliminare la cartella di Default");
+      else
+        alert("Errore");
+    },
+    error: function (data) {
+      console.log(data, "error");
+    }
+  });
+}
+
+
 
 window.onload = function () {
-  getFolders();
-
+  getFolders().then(function () {
+    document.getElementById("DefaultBtn").click();
+    Array.from(document.getElementsByClassName("trash")).forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if(confirm("Sei sicuro di voler eliminare la cartella? Tutti gli elementi contenuti verranno perduti"))
+          DeleteFolder(btn.id);
+      });
+    });
+  });
+  
   Array.from(document.getElementsByClassName("tableBtn")).forEach(function (btn) {
     btn.addEventListener("click", function () {
-      if(isNaN(btn.value))
-        getItems(btn.value,true);
+      getItems(btn.value);
+    });
   });
-});
-
-document.getElementById("newFolderBtn").addEventListener("click", function () {
-  AddFolder();
-});
-
-
   
+  document.getElementById("newFolderBtn").addEventListener("click", function () {
+    AddFolder();
+  });
+
+
 }
 
 

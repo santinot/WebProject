@@ -53,8 +53,8 @@ function ShowFolder($conn,$set){
     echo "Query Failed";
 }
 
-function ShowItems($conn,$set, $table1){
-  switch ($table1){
+function ShowItems($conn,$set, $table){
+  switch ($table){
     case 'ItemLogin':
       $sql = "SELECT DISTINCT `Folders`.`name`,`uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
       break;
@@ -111,14 +111,22 @@ function DeleteUser($conn,$set){
     
 }
 
-function ShowItemsFolder($conn,$set){
-  $sql = "SELECT DISTINCT `Folders`.`name`,`uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
-  $sql .= "SELECT DISTINCT `Folders`.`name`,`ItemNote`.`name` AS `title`,`text` FROM `ItemNote` JOIN `Folders` ON $set;";
-  $sql .= "SELECT DISTINCT `Folders`.`name`,`number`,`term`,`cvv` FROM `ItemCard` JOIN `Folders` ON $set;";
-    
-
-
-
+function DeleteFolder($conn,$set){
+  $check = "SELECT `name` FROM `Folders` WHERE $set;";
+  $result = $conn->query($check);
+  $row = $result->fetch_array(MYSQLI_ASSOC);
+  if ($row['name'] === 'Default'){
+    echo "Impossibile";
+    return false;
+  } else {
+    $sql = "DELETE FROM `Folders` WHERE $set;";
+    if ($conn->query($sql)) {
+      echo "Delete Successful";
+    } else {
+      echo "Delete Failed";
+    }
+  }
 }
+
 
 ?>

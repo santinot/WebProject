@@ -55,9 +55,6 @@
                   <div class="card border-dark" style="width: 16rem;">
                      <div class="card-header">Tipi</div>
                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><button class="btn btn-outline-dark" id="allItemsBtn">
-                           <img src="img/list-check.svg" class="bi bi-list-check mx-3">Tutti gli oggetti..</button>
-                        </li>
                         <li class="list-group-item"><button class="btn btn-outline-dark tableBtn" id="loginBtn" value="ItemLogin">
                            <img src="img/login.svg" class="bi mx-2">Login</button>
                         </li>
@@ -69,10 +66,11 @@
                         </li>
                      </ul>
                   </div>
-                  <div class="card border-dark" style="width: 16rem;">
+                  <div class="card border-dark" style="width: 16rem; margin-top: 13px;" >
                      <div class="card-header">Cartelle</div>
-                     <ul id="folderBox" class="list-group list-group-flush">
-                        <li class="list-group-item"><a id="newFolderBtn" role="button" >Aggiungi una cartella...</a></li>
+                     <ul id="folderBox" class="list-group list-group-flush" style="text-align: left;">
+                        <li class="list-group-item"><button class="btn btn-outline-dark tableBtn" id="newFolderBtn">
+                           <img src="img/plus.svg" class="bi mx-1">Aggiungi una cartella</button></li>
                      </ul>
                   </div>
                </div>

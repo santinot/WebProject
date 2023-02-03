@@ -34,6 +34,14 @@ switch ($method) {
       $set = '`Users`.`ID`=' . $_SESSION['ID_User'];
       InfoUser($conn,$set);
     }
+
+    if ($table1 === 'FolderItems'){
+      $value = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
+      $table2 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
+      $set = '';
+      $set = '`' . $table2 . '`.`ID_Folder` = `Folders`.`ID` AND `Folders`.`ID`= ' . $value;
+      ShowItems($conn, $set, $table2);
+    }
     break;
 
   case 'PUT':
@@ -113,6 +121,13 @@ switch ($method) {
       $set = '`ID`=' . $_SESSION['ID_User'];
       if (DeleteUser($conn, $set) === true)
         session_destroy();
+    }
+
+    if ($table1 === 'Folders'){
+      $id = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
+      $set = '';
+      $set = '`ID`=' . $id;
+      DeleteFolder($conn, $set);
     }
 }
 
