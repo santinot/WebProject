@@ -94,72 +94,84 @@ function CreateItemCard(){
 
     function TemplateLogin(){
         var box = document.getElementById('box');
-
+        
+        var row2 = document.createElement('div');
+        row2.classList.add('row', 'align-items-end');
+        box.appendChild(row2);
+        
+        var group = document.createElement('div');
+        group.classList.add('form-group','col-5');
+        box.appendChild(group);
+        
         var labelUsername = document.createElement('label');
         labelUsername.innerHTML = 'Username';
-        box.appendChild(labelUsername);
+        group.appendChild(labelUsername);
 
         var inputUsername = document.createElement('input');
         inputUsername.setAttribute('type', 'text');
         inputUsername.setAttribute('id', 'inputUsername');
         inputUsername.setAttribute('class', 'form-control');
         inputUsername.setAttribute('maxlength', '40');
-        box.appendChild(inputUsername);
+        group.appendChild(inputUsername);
 
-        var row2 = document.createElement('div');
-        row2.classList.add('row', 'align-items-end');
-        box.appendChild(row2);
-
-        var col = document.createElement('div');
-        col.classList.add('col');
-        row2.appendChild(col);
+        group = document.createElement('div');
+        group.classList.add('form-group','col-5');
+        box.appendChild(group);
 
         var labelPassword = document.createElement('label');
         labelPassword.innerHTML = 'Password';
-        col.appendChild(labelPassword);
+        group.appendChild(labelPassword);
 
         var inputpassword = document.createElement('input');
         inputpassword.setAttribute('type', 'password');
         inputpassword.setAttribute('id', 'inputpassword');
         inputpassword.setAttribute('class', 'form-control');
         inputpassword.setAttribute('maxlength', '40');
-        col.appendChild(inputpassword);
+        group.appendChild(inputpassword);
 
-        var checkPassword = document.createElement('div');
-        checkPassword.classList.add('col-4');
-        row2.appendChild(checkPassword);
+        group = document.createElement('div');
+        group.classList.add('form-group','col-2','mt-4','pt-1');
+        box.appendChild(group);
 
         var check = document.createElement('input');
         check.setAttribute('type', 'checkbox');
         check.setAttribute('id', 'showPass');
         check.classList.add('form-check-input');
-        checkPassword.appendChild(check);
+        group.appendChild(check);
 
         var labelCheck = document.createElement('label');
         labelCheck.classList.add('form-check-label', 'mx-2');
-        labelCheck.innerHTML = 'Mostra Password';
-        checkPassword.appendChild(labelCheck);
+        labelCheck.innerHTML = 'Mostra';
+        group.appendChild(labelCheck);
+
+        group = document.createElement('div');
+        group.classList.add('form-group','col-5','mt-2');
+        box.appendChild(group);
 
         var labelUri = document.createElement('label');
         labelUri.innerHTML = 'URI';
-        box.appendChild(labelUri);
+        group.appendChild(labelUri);
 
         var inputUri = document.createElement('input');
         inputUri.setAttribute('type', 'text');
         inputUri.setAttribute('id', 'inputUri');
         inputUri.setAttribute('class', 'form-control');
         inputUri.setAttribute('maxlength', '30');
-        box.appendChild(inputUri);
+        group.appendChild(inputUri);
+
+        group = document.createElement('div');
+        group.classList.add('form-group','col-7','mt-2');
+        box.appendChild(group);
 
         var labelFolder = document.createElement('label');
         labelFolder.innerHTML = 'Cartella';
-        box.appendChild(labelFolder);
+        group.appendChild(labelFolder);
 
         var selectFolder = document.createElement('select');
         selectFolder.setAttribute('id', 'folder');
         selectFolder.setAttribute('class', 'form-select');
         selectFolder.setAttribute('aria-label', '.form-select-lg example');
-        box.appendChild(selectFolder);
+        group.appendChild(selectFolder);
 
         var row3 = document.createElement('div');
         row3.classList.add('row', 'justify-content-between');
@@ -202,28 +214,28 @@ function CreateItemCard(){
     function TemplateCard(){
         var box = document.getElementById('box');
 
+        var group = document.createElement('div');
+        group.classList.add('form-group','col-6');
+        box.appendChild(group);
+
         var labelNumber = document.createElement('label');
         labelNumber.innerHTML = 'Numero Carta';
-        box.appendChild(labelNumber);
+        group.appendChild(labelNumber);
 
         var inputNumber = document.createElement('input');
         inputNumber.setAttribute('type', 'text');
         inputNumber.setAttribute('id', 'inputNumber');
         inputNumber.setAttribute('class', 'form-control');
         inputNumber.setAttribute('maxlength', '16');
-        box.appendChild(inputNumber);
+        group.appendChild(inputNumber);
 
-        var row2 = document.createElement('div');
-        row2.classList.add('row', 'align-items-end');
-        box.appendChild(row2);
-
-        var col = document.createElement('div');
-        col.classList.add('col');
-        row2.appendChild(col);
+        group = document.createElement('div');
+        group.classList.add('form-group','col-3');
+        box.appendChild(group);
 
         var labelTerm = document.createElement('label');
         labelTerm.innerHTML = 'Scadenza';
-        col.appendChild(labelTerm);
+        group.appendChild(labelTerm);
 
         var inputTerm = document.createElement('input');
         inputTerm.setAttribute('type', 'text');
@@ -232,28 +244,36 @@ function CreateItemCard(){
         inputTerm.setAttribute('placeholder', 'MM/YY');
         inputTerm.setAttribute('maxlength', '5');
         inputTerm.setAttribute('size', '5');
-        col.appendChild(inputTerm);
+        group.appendChild(inputTerm);
+
+        group = document.createElement('div');
+        group.classList.add('form-group','col-3');
+        box.appendChild(group);
 
         var labelCvv = document.createElement('label');
         labelCvv.innerHTML = 'CVV';
-        box.appendChild(labelCvv);
+        group.appendChild(labelCvv);
 
         var inputCvv = document.createElement('input');
         inputCvv.setAttribute('type', 'text');
         inputCvv.setAttribute('id', 'inputCvv');
         inputCvv.setAttribute('class', 'form-control');
         inputCvv.setAttribute('maxlength', '3');
-        box.appendChild(inputCvv);
+        group.appendChild(inputCvv);
+
+        group = document.createElement('div');
+        group.classList.add('form-group','col-6','mt-2');
+        box.appendChild(group);
 
         var labelFolder = document.createElement('label');
         labelFolder.innerHTML = 'Cartella';
-        box.appendChild(labelFolder);
+        group.appendChild(labelFolder);
 
         var selectFolder = document.createElement('select');
         selectFolder.setAttribute('id', 'folder');
         selectFolder.setAttribute('class', 'form-select');
         selectFolder.setAttribute('aria-label', '.form-select-lg example');
-        box.appendChild(selectFolder);
+        group.appendChild(selectFolder);
 
         var row3 = document.createElement('div');
         row3.classList.add('row', 'justify-content-between');
@@ -288,20 +308,28 @@ function CreateItemCard(){
     function TemplateNote(){
         var box = document.getElementById('box');
 
+        var group = document.createElement('div');
+        group.classList.add('form-group','col-6');
+        box.appendChild(group);
+
         var labelName = document.createElement('label');
         labelName.innerHTML = 'Nome Nota';
-        box.appendChild(labelName);
+        group.appendChild(labelName);
 
         var inputName = document.createElement('input');
         inputName.setAttribute('type', 'text');
         inputName.setAttribute('id', 'inputName');
         inputName.setAttribute('class', 'form-control');
         inputName.setAttribute('maxlength', '30');
-        box.appendChild(inputName);
+        group.appendChild(inputName);
+
+        group = document.createElement('div');
+        group.classList.add('form-group','col-12','mt-2');
+        box.appendChild(group);
 
         var labelNota = document.createElement('label');
         labelNota.innerHTML = 'Contenuto Nota';
-        box.appendChild(labelNota);
+        group.appendChild(labelNota);
 
         var inputNota = document.createElement('textarea');
         inputNota.setAttribute('id', 'inputNota');
@@ -309,17 +337,21 @@ function CreateItemCard(){
         inputNota.setAttribute('rows', '3');
         inputNota.setAttribute('maxlength', '200');
         inputNota.setAttribute('placeholder', 'Inserisci il nome della nota');
-        box.appendChild(inputNota);
+        group.appendChild(inputNota);
+
+        group = document.createElement('div');
+        group.classList.add('form-group','col-6','mt-2');
+        box.appendChild(group);
 
         var labelFolder = document.createElement('label');
         labelFolder.innerHTML = 'Cartella';
-        box.appendChild(labelFolder);
+        group.appendChild(labelFolder);
 
         var selectFolder = document.createElement('select');
         selectFolder.setAttribute('id', 'folder');
         selectFolder.setAttribute('class', 'form-select');
         selectFolder.setAttribute('aria-label', '.form-select-lg example');
-        box.appendChild(selectFolder);
+        group.appendChild(selectFolder);
 
         var row3 = document.createElement('div');
         row3.classList.add('row', 'justify-content-between');

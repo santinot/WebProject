@@ -58,7 +58,7 @@
                <option value="Card">Carta</option>
                <option value="Note">Nota</option>
             </select>
-            <div id="box" hidden></div>
+            <div id="box" class="row" hidden></div>
          </div>
       </div>
    </body>
