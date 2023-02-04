@@ -40,7 +40,6 @@ function CreateItem($conn,$table1,$set){
     echo "Item Creation Failed";
 }
 
-
 function ShowFolder($conn,$set){
   $sql = "SELECT `ID`,`name` FROM `Folders` WHERE $set;";
 
@@ -56,13 +55,13 @@ function ShowFolder($conn,$set){
 function ShowItems($conn,$set, $table){
   switch ($table){
     case 'ItemLogin':
-      $sql = "SELECT DISTINCT `Folders`.`name`,`uri`,`username`,`password` FROM `ItemLogin` JOIN `Folders` ON $set;";
+      $sql = "SELECT DISTINCT `Folders`.`name`,`uri`,`username`,`password`,`ItemLogin`.`ID` FROM `ItemLogin` JOIN `Folders` ON $set;";
       break;
     case 'ItemNote':
-      $sql = "SELECT DISTINCT `Folders`.`name`,`ItemNote`.`name` AS `title`,`text` FROM `ItemNote` JOIN `Folders` ON $set;";
+      $sql = "SELECT DISTINCT `Folders`.`name`,`ItemNote`.`name` AS `title`,`text`,`ItemNote`.`ID` FROM `ItemNote` JOIN `Folders` ON $set;";
       break;
     case 'ItemCard':
-      $sql = "SELECT DISTINCT `Folders`.`name`,`number`,`term`,`cvv` FROM `ItemCard` JOIN `Folders` ON $set;";
+      $sql = "SELECT DISTINCT `Folders`.`name`,`number`,`term`,`cvv`,`ItemCard`.`ID` FROM `ItemCard` JOIN `Folders` ON $set;";
       break;
   }
   if ($result = $conn->query($sql)) {
@@ -126,6 +125,14 @@ function DeleteFolder($conn,$set){
       echo "Delete Failed";
     }
   }
+}
+
+function DeleteItem($conn,$set,$table){
+  $sql = "DELETE FROM `$table` WHERE $set;";
+  if ($conn->query($sql))
+    echo "Delete Successful";
+  else
+    echo "Delete Failed";
 }
 
 

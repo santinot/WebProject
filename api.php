@@ -129,6 +129,14 @@ switch ($method) {
       $set = '`ID`=' . $id;
       DeleteFolder($conn, $set);
     }
+
+    if ($table1 === 'ItemLogin' || $table1 === 'ItemCard' || $table1 === 'ItemNote'){
+      $id = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
+      $set = '';
+      $set = '`ID`=' . $id;
+      DeleteItem($conn, $set, $table1);
+    }
+    break;
 }
 
 

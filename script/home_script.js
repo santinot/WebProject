@@ -64,11 +64,29 @@ function CreateTableItems(data,key,bool = true){
     var row = document.createElement("tr");
     for(var j = 0; j < values[key].length; j++){
       var cell = document.createElement("td");
+      if ([headers[key][j]] == "Password"){
+        cell.setAttribute("id","password");
+      }
       cell.appendChild(document.createTextNode(data[i][values[key][j]]));
       row.appendChild(cell);
+      if(j == (values[key].length)-1){
+        var icon = document.createElement("img");
+        icon.setAttribute("src","img/trash.svg");
+        icon.classList.add("bi","mx-2","trashItem");
+        icon.setAttribute("id",data[i].ID);
+        icon.setAttribute("role","button");
+        icon.setAttribute("value","Item" + key);
+        icon.setAttribute("title","Elimina Elemento");
+        row.appendChild(icon);
+
+        icon.addEventListener("click", function () {
+          if(confirm("Sei sicuro di voler eliminare l'elemento? Non potrai più recuperarlo"))
+            DeleteItem(icon.getAttribute("value"), icon.id);
+        });
+      }
     }
     tblBody.appendChild(row);
-    }
+  }
 }
 
 function getFolders() {
@@ -103,7 +121,7 @@ function CreateFolderBox(data){
 
 
     li.classList.add("list-group-item");
-    li.innerHTML = "<img src='img/trash.svg' class='bi mx-2 trash' role='button' id='" + data[i].ID + "'>";
+    li.innerHTML = "<img src='img/trash.svg' class='bi mx-2 trash' title='Elimina Cartella' role='button' id='" + data[i].ID + "'>";
     btn.classList.add("btn","btn-outline-dark","folderTableBtn");
     btn.setAttribute("id",data[i].name + "Btn");
     btn.value = data[i].ID;
@@ -169,10 +187,10 @@ function AddFolder(){
   });
 }
 
-function DeleteFolder(value){
+function DeleteFolder(id){
   $.ajax({
     type: "DELETE",
-    url: "api.php/Folders/" + value,
+    url: "api.php/Folders/" + id,
     success: function (data) {
       console.log(data);
       if(data.search("Delete Successful") != -1 ){
@@ -189,11 +207,29 @@ function DeleteFolder(value){
   });
 }
 
-
+function DeleteItem(table, id){
+  $.ajax({
+    type: "DELETE",
+    url: "api.php/" + table + "/" + id,
+    success: function (data) {
+      console.log(data);
+      if(data.search("Delete Successful") != -1 ){
+        alert("Elemento eliminato");
+        window.location.reload();
+      }else
+        alert("Errore");
+    },
+    error: function (data) {
+      console.log(data, "error");
+      
+    }
+  });
+}
 
 window.onload = function () {
   getFolders().then(function () {
     document.getElementById("DefaultBtn").click();
+
     Array.from(document.getElementsByClassName("trash")).forEach(function (btn) {
       btn.addEventListener("click", function () {
         if(confirm("Sei sicuro di voler eliminare la cartella? Tutti gli elementi contenuti verranno perduti"))
@@ -211,9 +247,5 @@ window.onload = function () {
   document.getElementById("newFolderBtn").addEventListener("click", function () {
     AddFolder();
   });
-
-
-}
-
-
+};
 

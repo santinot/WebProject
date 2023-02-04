@@ -76,7 +76,7 @@
                </div>
                <!-- Colonna di destra -->            
                <div class="col-sm-8 text-center m-lg-4" id="division">
-                  <table id="myTable" class="table table-hover myTable"></table>
+                  <table id="myTable" class="table table-hover myTable"></table>   
                </div>
             </div>
          </div>

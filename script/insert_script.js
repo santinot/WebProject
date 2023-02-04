@@ -92,7 +92,7 @@ function CreateItemCard(){
         }
     };
 
-    function DemoLogin(){
+    function TemplateLogin(){
         var box = document.getElementById('box');
 
         var labelUsername = document.createElement('label');
@@ -103,6 +103,7 @@ function CreateItemCard(){
         inputUsername.setAttribute('type', 'text');
         inputUsername.setAttribute('id', 'inputUsername');
         inputUsername.setAttribute('class', 'form-control');
+        inputUsername.setAttribute('maxlength', '40');
         box.appendChild(inputUsername);
 
         var row2 = document.createElement('div');
@@ -121,6 +122,7 @@ function CreateItemCard(){
         inputpassword.setAttribute('type', 'password');
         inputpassword.setAttribute('id', 'inputpassword');
         inputpassword.setAttribute('class', 'form-control');
+        inputpassword.setAttribute('maxlength', '40');
         col.appendChild(inputpassword);
 
         var checkPassword = document.createElement('div');
@@ -146,6 +148,7 @@ function CreateItemCard(){
         inputUri.setAttribute('type', 'text');
         inputUri.setAttribute('id', 'inputUri');
         inputUri.setAttribute('class', 'form-control');
+        inputUri.setAttribute('maxlength', '30');
         box.appendChild(inputUri);
 
         var labelFolder = document.createElement('label');
@@ -196,7 +199,7 @@ function CreateItemCard(){
 
     }
 
-    function DemoCard(){
+    function TemplateCard(){
         var box = document.getElementById('box');
 
         var labelNumber = document.createElement('label');
@@ -207,6 +210,7 @@ function CreateItemCard(){
         inputNumber.setAttribute('type', 'text');
         inputNumber.setAttribute('id', 'inputNumber');
         inputNumber.setAttribute('class', 'form-control');
+        inputNumber.setAttribute('maxlength', '16');
         box.appendChild(inputNumber);
 
         var row2 = document.createElement('div');
@@ -224,7 +228,10 @@ function CreateItemCard(){
         var inputTerm = document.createElement('input');
         inputTerm.setAttribute('type', 'text');
         inputTerm.setAttribute('id', 'inputTerm');
-        inputTerm.setAttribute('class', 'form-control');
+        inputTerm.setAttribute('class','form-control');
+        inputTerm.setAttribute('placeholder', 'MM/YY');
+        inputTerm.setAttribute('maxlength', '5');
+        inputTerm.setAttribute('size', '5');
         col.appendChild(inputTerm);
 
         var labelCvv = document.createElement('label');
@@ -235,6 +242,7 @@ function CreateItemCard(){
         inputCvv.setAttribute('type', 'text');
         inputCvv.setAttribute('id', 'inputCvv');
         inputCvv.setAttribute('class', 'form-control');
+        inputCvv.setAttribute('maxlength', '3');
         box.appendChild(inputCvv);
 
         var labelFolder = document.createElement('label');
@@ -277,7 +285,7 @@ function CreateItemCard(){
         });
     }
 
-    function DemoNote(){
+    function TemplateNote(){
         var box = document.getElementById('box');
 
         var labelName = document.createElement('label');
@@ -288,6 +296,7 @@ function CreateItemCard(){
         inputName.setAttribute('type', 'text');
         inputName.setAttribute('id', 'inputName');
         inputName.setAttribute('class', 'form-control');
+        inputName.setAttribute('maxlength', '30');
         box.appendChild(inputName);
 
         var labelNota = document.createElement('label');
@@ -298,6 +307,7 @@ function CreateItemCard(){
         inputNota.setAttribute('id', 'inputNota');
         inputNota.setAttribute('class', 'form-control');
         inputNota.setAttribute('rows', '3');
+        inputNota.setAttribute('maxlength', '200');
         inputNota.setAttribute('placeholder', 'Inserisci il nome della nota');
         box.appendChild(inputNota);
 
@@ -347,15 +357,16 @@ function CreateItemCard(){
         document.getElementById('box').removeAttribute('hidden');
         if(this.value === 'Login'){
            document.getElementById('box').innerHTML = '';
-           DemoLogin();
+           TemplateLogin
+    ();
 
         }else if(this.value === 'Card'){
             document.getElementById('box').innerHTML = '';
-            DemoCard();
+            TemplateCard();
 
         }else if(this.value === 'Note'){
             document.getElementById('box').innerHTML = '';
-            DemoNote();
+            TemplateNote();
 
         }else{
             document.getElementById('box').setAttribute('hidden', 'hidden' );
