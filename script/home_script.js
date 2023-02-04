@@ -67,8 +67,13 @@ function CreateTableItems(data,key,bool = true){
         var input = document.createElement("input");
         input.setAttribute("readonly","readonly");
         input.setAttribute("type","password");
+        input.setAttribute("size","7");
         input.setAttribute("value",data[i][values[key][j]]);
         row.appendChild(input);
+
+        input.addEventListener("click", function(){
+          input.setAttribute("type","text");  
+        });
       }else{
         var cell = document.createElement("td");
         cell.appendChild(document.createTextNode(data[i][values[key][j]]));
