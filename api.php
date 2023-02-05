@@ -1,15 +1,21 @@
 <?php
+//Inclusione dei file necessari alla connessione al database e alle funzioni
 require_once('php/db_connection.php');
 require_once('php/functions.php');
+//Creazione PUT e DELETE
 parse_str(file_get_contents('php://input'), $_PUT);
 parse_str(file_get_contents('php://input'), $_DELETE);
+
 session_start();
-
 $conn = OpenConnection();
-
+//Inserimento in una variabile del metodo della richiesta
 $method = $_SERVER['REQUEST_METHOD'];
+//Inserimento valori passati tramite url in un array
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+//Inserimento in una variabile del primo valore dell'array
 $table1 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
+
+//Controllo se la richiesta è GET, POST, PUT o DELETE e preparazione delle queries da eseguire nelle funzioni
 switch ($method) {
   case 'GET':
     if($table1 === 'Folders'){
@@ -138,8 +144,7 @@ switch ($method) {
     }
     break;
 }
-
-
+//Chiusura connessione
 CloseConnection();
   
 ?>

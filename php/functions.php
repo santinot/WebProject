@@ -1,7 +1,6 @@
 <?php
-
 session_start();
-
+//Inserimento dati utente alla registrazione
 function InsertData($conn,$user,$info,$setUser,$setInfo){
   $sql1= "INSERT INTO `$user` SET $setUser;";
   $sql2= "INSERT INTO `$info` SET $setInfo, `ID_User` = LAST_INSERT_ID();";
@@ -13,10 +12,9 @@ function InsertData($conn,$user,$info,$setUser,$setInfo){
         echo "Registration Successful";
         return;
       }
-      
       echo "Registration Failed";
 }
-
+//Controllo presenza dati utente nel database al login
 function CheckData($conn,$table1,$set,$pwd){
   $sql = "SELECT * FROM `$table1` WHERE $set;";
   
@@ -27,11 +25,11 @@ function CheckData($conn,$table1,$set,$pwd){
       echo "Login Successful";
     else
       echo "Login Failed";
-    } else {
-      echo "Query Failed";
-    }
+  }else {
+    echo "Query Failed";
+  }
 }
-
+//Creazione di un nuovo elemento (cartella, login, nota, carta)
 function CreateItem($conn,$table1,$set){
   $sql = "INSERT INTO `$table1` SET $set";
   if ($table1 === 'Folders') 
@@ -42,7 +40,7 @@ function CreateItem($conn,$table1,$set){
   else
     echo "Item Creation Failed";
 }
-
+//Mostrare le cartelle dell'utente
 function ShowFolder($conn,$set){
   $sql = "SELECT `ID`,`name` FROM `Folders` WHERE $set;";
 
@@ -54,7 +52,7 @@ function ShowFolder($conn,$set){
   } else
     echo "Query Failed";
 }
-
+//Mostrare gli elementi dell'utente in base alla cartella selezionata
 function ShowItems($conn,$set, $table){
   switch ($table){
     case 'ItemLogin':
@@ -78,7 +76,7 @@ function ShowItems($conn,$set, $table){
   } else
     echo "Query Failed";
 }
-
+//Mostrare le informazioni dell'utente
 function InfoUser($conn, $set){
   $sql = "SELECT `Info`.`fname`, `Info`.`lname`, `Info`.`phone`, `Users`.`email` 
           FROM `Info` JOIN `Users` ON `Info`.`ID_User` = `Users`.`ID` AND $set;";
@@ -91,7 +89,7 @@ function InfoUser($conn, $set){
   } else
     echo "Query Failed";
 }
-
+//Modificare l'informazione selezionata dell'utente 
 function UpdateInfo($conn,$set,$table1){
   $sql = "UPDATE `$table1` SET $set;";
   var_dump($sql);
@@ -100,7 +98,7 @@ function UpdateInfo($conn,$set,$table1){
   else
     echo "Update Failed";
 }
-
+//Eliminazione account utente e tutti i suoi dati
 function DeleteUser($conn,$set){
   $sql= "DELETE FROM `Users` WHERE $set";
   if($conn->query($sql)){
@@ -112,7 +110,7 @@ function DeleteUser($conn,$set){
   }
     
 }
-
+//Eliminazione di una cartella
 function DeleteFolder($conn,$set){
   $check = "SELECT `name` FROM `Folders` WHERE $set;";
   $result = $conn->query($check);
@@ -129,7 +127,7 @@ function DeleteFolder($conn,$set){
     }
   }
 }
-
+//Eliminazione di un elemento (cartella, login, nota, carta)
 function DeleteItem($conn,$set,$table){
   $sql = "DELETE FROM `$table` WHERE $set;";
   if ($conn->query($sql))

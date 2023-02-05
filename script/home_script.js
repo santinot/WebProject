@@ -1,3 +1,4 @@
+//Ottenimento dati dal database da mostrare nella tabella e relativa creazione
 function getItems(btn) {
   $.ajax({
     type: "GET",
@@ -16,7 +17,7 @@ function getItems(btn) {
     }
   });
 }
-
+//Creazione tabella con i dati contenuti nel database
 function CreateTableItems(data,key,bool = true){
   var values = {"Login":['name','uri','username','password'],
                 "Card":['name','number','term','cvv'],
@@ -101,7 +102,7 @@ function CreateTableItems(data,key,bool = true){
     tblBody.appendChild(row);
   }
 }
-
+//Ottenimento cartelle da mostrare nella home page
 function getFolders() {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -124,7 +125,7 @@ function getFolders() {
     });
   });
 }
-
+//Creazione del box che contiene le cartelle nella home page ottenute tramite la funzione getFolders
 function CreateFolderBox(data){
   var ul = document.getElementById("folderBox");
   
@@ -158,7 +159,7 @@ function CreateFolderBox(data){
     });
   }
 }  
-
+//Ottenimento valori di una tabella specifica
 function getFolderItems(value, key, bool = true){
   $.ajax({
     type: "GET",
@@ -176,7 +177,7 @@ function getFolderItems(value, key, bool = true){
     }
   });
 }
-
+//Creazione di una nuova cartella
 function AddFolder(){
   var name = prompt("Inserisci il nome della cartella");
   if (name == null || name == "") {
@@ -199,7 +200,7 @@ function AddFolder(){
     }
   });
 }
-
+//Eliminazione di una cartella specifica
 function DeleteFolder(id){
   $.ajax({
     type: "DELETE",
@@ -219,7 +220,7 @@ function DeleteFolder(id){
     }
   });
 }
-
+//Eliminazione di un elemento specifico
 function DeleteItem(table, id){
   $.ajax({
     type: "DELETE",
@@ -240,6 +241,10 @@ function DeleteItem(table, id){
 }
 
 window.onload = function () {
+  /*
+  Causa richiesta asincrona, si attende quando la richiesta è completata per poter eseguire il click del bottone di default
+  e per poter aggiungere gli eventi ai bottoni di eliminazione
+  */
   getFolders().then(function () {
     document.getElementById("DefaultBtn").click();
 
@@ -250,13 +255,13 @@ window.onload = function () {
       });
     });
   });
-  
+  //Aggiunta degli eventi ai bottoni per la creazione di una nuova cartella e per la visualizzazione
   Array.from(document.getElementsByClassName("tableBtn")).forEach(function (btn) {
     btn.addEventListener("click", function () {
       getItems(btn.value);
     });
   });
-  
+  //Aggiunta dell'evento al bottone per la creazione di una nuova cartella
   document.getElementById("newFolderBtn").addEventListener("click", function () {
     AddFolder();
   });

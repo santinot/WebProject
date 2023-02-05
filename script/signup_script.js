@@ -1,6 +1,7 @@
 window.onload = function(){
+    //Aggiunta evento al click del bottone di registrazione
     document.getElementById("signupBtn").addEventListener("click", Registration);
-    
+    //Controllo dei dati inseriti e invio della richiesta di registrazione
     function Registration(){
         var fname = document.getElementById("fname").value;
         var lname = document.getElementById("lname").value;

@@ -1,4 +1,6 @@
 <?php
+
+//Effettuare la connessione al database
 function OpenConnection()
 {
     $servername = "localhost";
@@ -6,10 +8,10 @@ function OpenConnection()
     $password = "";
     $dbname = "Locker";
 
-    // Create connection
+    // Creazione connessione
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
+    // Controllo connessione
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -17,6 +19,7 @@ function OpenConnection()
     return $conn;
 }
 
+//Chiudere la connessione al database
 function CloseConnection()
 {
     $servername = "localhost";

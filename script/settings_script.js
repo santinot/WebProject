@@ -1,3 +1,4 @@
+//Visualizzazione form dati utente e bottoni per la modifica
 function SetValues(data){
     document.getElementById("fname").innerHTML = data[0]['fname'] + '<img src="img/pencil.svg" id="editFname" role="button" class="bi2 mx-2">';
     document.getElementById("lname").innerHTML = data[0]['lname'] + '<img src="img/pencil.svg" id="editLname" role="button" class="bi2 mx-2">';
@@ -29,7 +30,7 @@ function SetValues(data){
         });
     });
 }
-
+//Invio dei valori da modificare
 function SendValues(value, field, table){
     $.ajax({
         type: "PUT",
@@ -50,7 +51,7 @@ function SendValues(value, field, table){
     });
 }
 
-    
+//Visualizzazione modello per la modifica dei dati    
 function EditEvent(paragraph){
     var val = document.getElementById(paragraph);
     var input = document.createElement("input");
@@ -66,7 +67,7 @@ function EditEvent(paragraph){
     btn.innerHTML = "Salva";
     val.appendChild(btn);
 }
-
+//Ottenimento dei dati utente
 function GetValues(){
     $.ajax({
         type: "GET",
@@ -81,7 +82,7 @@ function GetValues(){
         }
     });
 }
-
+//Eliminazione dell'account
 function DeleteAccount(){
     $.ajax({
         type: "DELETE",
@@ -102,7 +103,9 @@ function DeleteAccount(){
 
 
 window.onload = function() {
+    //Visualizzazione dei dati utente al caricamento della pagina
     GetValues(); 
+    //Aggiunta dell'evento di eliminazione dell'account
     document.getElementById("deleteAccount").addEventListener("click", function(){
         if(confirm("Sei sicuro di voler eliminare il tuo account? Tutti i dati verranno perduti"))
             DeleteAccount();
