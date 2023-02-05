@@ -6,28 +6,31 @@ function CreateItemCard(){
         if (num == "" || term == "" || cvv == "" || folder == ""){
             alert("Compila tutti i campi");
             return;
-        }else{
-            $.ajax({
-                type: "POST",
-                url: "api.php/ItemCard",
-                data: {
-                    action: "AddItem",
-                    number: num,
-                    term: term,
-                    cvv: cvv,
-                    ID_Folder: folder
-                },
-                success: function(data) {
-                    console.log(data);
-                    alert("Carta aggiunta");
-                    window.location.reload();
-                },
-                error: function(data){
-                    console.log(data);
-                    alert("Errore");
-                }
-            });
         }
+        if (term.search("/") == -1){
+            alert("Inserire la data nel formato gg/aa");
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "api.php/ItemCard",
+            data: {
+                action: "AddItem",
+                number: num,
+                term: term,
+                cvv: cvv,
+                ID_Folder: folder
+            },
+            success: function(data) {
+                console.log(data);
+                alert("Carta aggiunta");
+                window.location.reload();
+            },
+            error: function(data){
+                console.log(data);
+                alert("Errore");
+            }
+        }); 
     };
 
     function CreateItemLogin(){

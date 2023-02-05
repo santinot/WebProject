@@ -2,16 +2,19 @@
 
 session_start();
 
-function InsertData($conn,$table1,$table2,$set1,$set2){
-  $sql = "INSERT INTO `$table1` SET $set2;";
-  $sql.= "INSERT INTO `$table2` SET $set1, `ID_User` = LAST_INSERT_ID();";
-  $sql.= "INSERT INTO `Folders` SET `ID_User` = LAST_INSERT_ID(), `name` = 'Default';";
-  if($conn->multi_query($sql)){
-    echo "Registration Successful";
-  }
-  else{
-    echo "Registration Failed";
-  }
+function InsertData($conn,$user,$info,$setUser,$setInfo){
+  $sql1= "INSERT INTO `$user` SET $setUser;";
+  $sql2= "INSERT INTO `$info` SET $setInfo, `ID_User` = LAST_INSERT_ID();";
+  $sql3= "INSERT INTO `Folders` SET `ID_User` = LAST_INSERT_ID(), `name` = 'Default';";
+
+  if($conn->query($sql1))
+    if($conn->query($sql2))
+      if($conn->query($sql3)){
+        echo "Registration Successful";
+        return;
+      }
+      
+      echo "Registration Failed";
 }
 
 function CheckData($conn,$table1,$set,$pwd){

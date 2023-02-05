@@ -63,23 +63,23 @@ switch ($method) {
   
     case 'POST':
     if($_POST['action'] === 'Registration'){
-        $table2 = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
+        $info = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
         $columns = preg_replace('/[^a-z0-9_]+/i','',array_keys($_POST));
         $values = array_map(function ($value) use ($conn) {
           if ($value===null) return null;
             return mysqli_real_escape_string($conn,(string)$value);
         },array_values($_POST));
-        $set1 = '';
-        $set2 = '';
+        $setUser = '';
+        $setInfo = '';
         for ($i=1;$i< 4;$i++) {
-          $set1.=($i>1?',':'').'`'.$columns[$i].'`=';
-          $set1.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
+          $setInfo.=($i>1?',':'').'`'.$columns[$i].'`=';
+          $setInfo.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
         }
         for ($i=4;$i<count($columns);$i++) {
-          $set2.=($i>4?',':'').'`'.$columns[$i].'`=';
-          $set2.=($values[$i]===null?'NULL':'"'.($i==5?(password_hash($values[$i],PASSWORD_DEFAULT).'"'):$values[$i].'"'));
+          $setUser.=($i>4?',':'').'`'.$columns[$i].'`=';
+          $setUser.=($values[$i]===null?'NULL':'"'.($i==5?(password_hash($values[$i],PASSWORD_DEFAULT).'"'):$values[$i].'"'));
         }
-        InsertData($conn,$table1,$table2,$set1,$set2);
+        InsertData($conn,$table1,$info,$setUser,$setInfo);
     }
 
     if ($_POST['action'] === 'Login') {
