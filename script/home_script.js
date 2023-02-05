@@ -69,7 +69,7 @@ function CreateTableItems(data,key,bool = true){
         var input = document.createElement("input");
         input.setAttribute("readonly","readonly");
         input.setAttribute("type","password");
-        input.setAttribute("size","7");
+        input.setAttribute("size","13");
         input.setAttribute("value",data[i][values[key][j]]);
         cell.appendChild(input);
 
