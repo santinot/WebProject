@@ -63,22 +63,25 @@ function CreateTableItems(data,key,bool = true){
   for(var i = 0; i < data.length; i++){
     var row = document.createElement("tr");
     for(var j = 0; j < values[key].length; j++){
+      var cell = document.createElement("td");
       if ([headers[key][j]] == "Password"){
         var input = document.createElement("input");
         input.setAttribute("readonly","readonly");
         input.setAttribute("type","password");
         input.setAttribute("size","7");
         input.setAttribute("value",data[i][values[key][j]]);
-        row.appendChild(input);
+        cell.appendChild(input);
 
         input.addEventListener("click", function(){
-          input.setAttribute("type","text");  
+          if(this.getAttribute("type") == "text")
+            this.setAttribute("type","password"); 
+          else
+            this.setAttribute("type","text"); 
         });
       }else{
-        var cell = document.createElement("td");
         cell.appendChild(document.createTextNode(data[i][values[key][j]]));
-        row.appendChild(cell);
       }
+      row.appendChild(cell);
       if(j == (values[key].length)-1){
         var icon = document.createElement("img");
         icon.setAttribute("src","img/trash.svg");
