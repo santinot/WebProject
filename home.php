@@ -19,6 +19,7 @@
       <script src="script/home_script.js"></script>
       <link href="style/home.css" rel="stylesheet">
       <script>
+         //Logout utente ed eliminazione sessione
          function logout() {
              $.ajax({
                  type: "GET",
@@ -35,7 +36,7 @@
          <header class="form-signin w-100 m-auto">
             <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
                <a href="home.php" class="d-flex align-items-center text-dark text-decoration-none">
-                  <img src="img/logo3.png" width="300" height="100" class="me-2">
+               <img src="img/logo3.png" width="300" height="100" class="me-2">
                </a>
                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                   <a class="me-3 py-2 text-dark text-decoration-none" href="home.php">Oggetti</a>
@@ -70,13 +71,14 @@
                      <div class="card-header">Cartelle</div>
                      <ul id="folderBox" class="list-group list-group-flush" style="text-align: left;">
                         <li class="list-group-item"><button class="btn btn-outline-dark tableBtn" id="newFolderBtn">
-                           <img src="img/plus.svg" class="bi mx-1">Aggiungi una cartella</button></li>
+                           <img src="img/plus.svg" class="bi mx-1">Aggiungi una cartella</button>
+                        </li>
                      </ul>
                   </div>
                </div>
                <!-- Colonna di destra -->            
                <div class="col-sm-8 text-center m-lg-4" id="division">
-                  <table id="myTable" class="table table-hover myTable"></table>   
+                  <table id="myTable" class="table table-hover myTable"></table>
                </div>
             </div>
          </div>

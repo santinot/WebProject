@@ -4,13 +4,13 @@
 function OpenConnection()
 {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "Locker";
-
+    $username   = "root";
+    $password   = "";
+    $dbname     = "Locker";
+    
     // Creazione connessione
     $conn = new mysqli($servername, $username, $password, $dbname);
-
+    
     // Controllo connessione
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -23,12 +23,12 @@ function OpenConnection()
 function CloseConnection()
 {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "Locker";
-
+    $username   = "root";
+    $password   = "";
+    $dbname     = "Locker";
+    
     $conn = new mysqli($servername, $username, $password, $dbname);
     $conn->close();
 }
 
-?>
+?> 

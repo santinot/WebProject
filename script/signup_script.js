@@ -1,8 +1,8 @@
-window.onload = function(){
+window.onload = function() {
     //Aggiunta evento al click del bottone di registrazione
     document.getElementById("signupBtn").addEventListener("click", Registration);
     //Controllo dei dati inseriti e invio della richiesta di registrazione
-    function Registration(){
+    function Registration() {
         var fname = document.getElementById("fname").value;
         var lname = document.getElementById("lname").value;
         var phone = document.getElementById("phone").value;
@@ -10,30 +10,25 @@ window.onload = function(){
         var password = document.getElementById("signupPassword").value;
         var password2 = document.getElementById("signupPassword2").value;
 
-        if (fname == "" || lname == "" || phone == "" || email == "" || password == "" || password2 == ""){
+        if (fname == "" || lname == "" || phone == "" || email == "" || password == "" || password2 == "") {
             alert("Riempi tutti i campi");
             return;
-        }
-        else if (isNaN(phone)) {
+        } else if (isNaN(phone)) {
             alert("Inserire solo valori numerici nel campo telefono");
             return;
-        }
-        else if(password.length < 6){
+        } else if (password.length < 6) {
             alert("La password deve essere di almeno 6 caratteri");
             return;
-        }
-        else if(!email.match(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g)){
+        } else if (!email.match(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g)) {
             alert("Email non valida");
             return;
-        }
-        else if(password != password2){
+        } else if (password != password2) {
             alert("Password non corrispondenti");
             return;
-        }
-        else{
+        } else {
             $.ajax({
                 type: "POST",
-                url: "api.php/Users/Info", 
+                url: "api.php/Users/Info",
                 data: {
                     action: "Registration",
                     fname: fname,
@@ -44,9 +39,9 @@ window.onload = function(){
                 },
                 success: function(data) {
                     console.log(data);
-                    if(data == "Registration Failed")
+                    if (data == "Registration Failed")
                         alert("Registrazione Fallita, riprovare");
-                    else{
+                    else {
                         alert("Registrazione effettuata con successo");
                         location.href = "index.php";
                     }

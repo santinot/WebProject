@@ -19,15 +19,16 @@
       <script src="script/settings_script.js"></script>
       <link href="style/home.css" rel="stylesheet">
       <script>
-         function logout() {
-             $.ajax({
-                 type: "GET",
-                 url: "api.php/Logout", 
-                 success: function(data) {
-                     window.location.href = "index.php";
-                 }
-             });
-         }
+         //Logout utente ed eliminazione sessione
+          function logout() {
+              $.ajax({
+                  type: "GET",
+                  url: "api.php/Logout", 
+                  success: function(data) {
+                      window.location.href = "index.php";
+                  }
+              });
+          }
       </script>
    </head>
    <body>
@@ -35,7 +36,7 @@
       <header class="form-signin w-100 m-auto">
          <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
             <a href="home.php" class="d-flex align-items-center text-dark text-decoration-none">
-                <img src="img/logo3.png" width="300" height="100" class="me-2">
+            <img src="img/logo3.png" width="300" height="100" class="me-2">
             </a>
             <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                <a class="me-3 py-2 text-dark text-decoration-none" href="home.php">Oggetti</a>
@@ -49,41 +50,36 @@
          </div>
       </header>
       <div class="container">
-        <div class="row">
+         <div class="row">
             <div class="card w-50" id="mycard">
-                <h5 class="card-header">Informazioni Utente</h5>
-                <div class="row">
-                    <div class="col m-2">
-                        <h5 class="card-title">Nome</h5>
-                        <p class="card-text" id="fname"></p>
-                    </div>
-                    <div class="col m-2">
-                        <h5 class="card-title">Cognome</h5>
-                        <p class="card-text" id="lname"></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m-2">
-                        <h5 class="card-title">Cellulare</h5>
-                        <p class="card-text" id="phone"></p>
-                    </div>
-                    <div class="col m-2">
-                        <h5 class="card-title">Email</h5>
-                        <p class="card-text" id="email"></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m-2">
-                        <button type="button" class="btn btn-danger" id="deleteAccount">Elimina Account</button>
-                    </div>
-                </div>
+               <h5 class="card-header">Informazioni Utente</h5>
+               <div class="row">
+                  <div class="col m-2">
+                     <h5 class="card-title">Nome</h5>
+                     <p class="card-text" id="fname"></p>
+                  </div>
+                  <div class="col m-2">
+                     <h5 class="card-title">Cognome</h5>
+                     <p class="card-text" id="lname"></p>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col m-2">
+                     <h5 class="card-title">Cellulare</h5>
+                     <p class="card-text" id="phone"></p>
+                  </div>
+                  <div class="col m-2">
+                     <h5 class="card-title">Email</h5>
+                     <p class="card-text" id="email"></p>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col m-2">
+                     <button type="button" class="btn btn-danger" id="deleteAccount">Elimina Account</button>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>
-
-    
-
-
-
+         </div>
+      </div>
    </body>
 </html>
