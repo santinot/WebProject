@@ -87,6 +87,7 @@ switch ($method) {
             }
             for ($i = 4; $i < count($columns); $i++) {
                 $setUser .= ($i > 4 ? ',' : '') . '`' . $columns[$i] . '`=';
+                //Hashing della password
                 $setUser .= ($values[$i] === null ? 'NULL' : '"' . ($i == 5 ? (password_hash($values[$i], PASSWORD_DEFAULT) . '"') : $values[$i] . '"'));
             }
             InsertData($conn, $table1, $info, $setUser, $setInfo);

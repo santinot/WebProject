@@ -26,6 +26,7 @@ function CheckData($conn, $table1, $set, $pwd)
     if ($result = $conn->query($sql)) {
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $_SESSION["ID_User"] = $row["ID"];
+        //Verifica password
         if (password_verify($pwd, $row["password"])) {
             echo "Login Successful";
         } else {
@@ -81,6 +82,7 @@ function ShowItems($conn, $set, $table)
     if ($result = $conn->query($sql)) {
         $options = [];
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+            //Decrittazione password
             if ($row["password"] && $row["username"]) {
                 $row["password"] = openssl_decrypt(
                     $row["password"],
